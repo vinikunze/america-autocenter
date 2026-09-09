@@ -19,7 +19,7 @@ export function StructuredData() {
     url: siteUrl,
     telephone: `+${business.phone.raw}`,
     email: business.email,
-    image: `${siteUrl}/opengraph-image`,
+    image: `${siteUrl}/og.png`,
     priceRange: "$$",
     currenciesAccepted: "BRL",
     paymentAccepted: "Dinheiro, Pix, Cartão de débito, Cartão de crédito",

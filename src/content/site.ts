@@ -67,8 +67,16 @@ export const business = {
     "Olá! Vim pelo site da América Auto Center e gostaria de fazer um orçamento.",
 } as const;
 
-/** URL canônica de produção — ajuste ao registrar o domínio. */
-export const siteUrl = "https://americaautocenter.com.br"; // CONFIRMAR
+/**
+ * URL canônica de produção (canonical, sitemap, OpenGraph e schema.org).
+ * Definida pelo ambiente de deploy; o valor abaixo é o padrão do domínio
+ * próprio. Ajuste ao registrar o domínio definitivo.
+ */
+export const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://americaautocenter.com.br"; // CONFIRMAR
+
+/** Prefixo de subdiretório, quando o site não é servido da raiz. */
+export const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 /* --------------------------------------------------------------------- */
 /*  PROVA / NÚMEROS DA VITRINE                                            */

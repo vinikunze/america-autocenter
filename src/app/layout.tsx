@@ -47,11 +47,16 @@ export const metadata: Metadata = {
     siteName: business.name,
     title,
     description: business.shortDescription,
+    // URL absoluta e com extensão: hospedagens estáticas simples servem
+    // o arquivo sem extensão como octet-stream e o WhatsApp não renderiza
+    // a prévia. Ver scripts/og.mjs.
+    images: [{ url: `${siteUrl}/og.png`, width: 1200, height: 630, alt: title }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description: business.shortDescription,
+    images: [`${siteUrl}/og.png`],
   },
   robots: {
     index: true,

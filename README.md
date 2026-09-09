@@ -115,7 +115,7 @@ Origens instrumentadas: `header`, `hero`, `servicos`, `processo`, `contato`,
 
 O build gera arquivos estáticos, então qualquer hospedagem serve.
 
-**Vercel** (recomendado, gratuito neste porte)
+**Vercel** (melhor opção quando houver domínio próprio)
 1. Importe o repositório.
 2. Framework: Next.js. Nada mais a configurar.
 3. Cadastre as variáveis `NEXT_PUBLIC_*` em *Settings → Environment Variables*.
@@ -124,8 +124,24 @@ O build gera arquivos estáticos, então qualquer hospedagem serve.
 - Build: `npm run build` · Publish directory: `out`
 - O arquivo `public/_headers` já traz cache e cabeçalhos de segurança.
 
+**GitHub Pages** (já configurado neste repositório)
+1. Em *Settings → Pages*, mude **Source** para **GitHub Actions**.
+   No modo "Deploy from a branch" o GitHub renderiza o README com Jekyll
+   em vez de servir o site.
+2. Pronto: `.github/workflows/deploy.yml` roda typecheck, build e publica
+   em `https://vinikunze.github.io/america-autocenter/`.
+3. IDs de rastreamento (opcional): *Settings → Secrets and variables →
+   Actions → Variables*, com os mesmos nomes do `.env.example`.
+
+Como é uma página **de projeto**, o site fica em subdiretório, e o workflow
+passa `NEXT_PUBLIC_BASE_PATH=/america-autocenter` — sem isso todo CSS e JS
+apontaria para a raiz do domínio e retornaria 404. **Ao apontar um domínio
+próprio para o Pages, remova essa variável** e ajuste `NEXT_PUBLIC_SITE_URL`.
+
 **Hospedagem tradicional (cPanel, Hostinger, FTP)**
 - Rode `npm run build` e suba o conteúdo de `out/` para a raiz do domínio.
+- Se o site ficar em subpasta, faça o build com
+  `NEXT_PUBLIC_BASE_PATH=/subpasta npm run build`.
 
 ---
 
@@ -133,7 +149,10 @@ O build gera arquivos estáticos, então qualquer hospedagem serve.
 
 - Metadata completa (title, description, canonical, OpenGraph, Twitter Card).
 - Card de compartilhamento gerado no build (`src/app/opengraph-image.tsx`) — é o
-  que aparece ao colar o link no WhatsApp e no Instagram.
+  que aparece ao colar o link no WhatsApp e no Instagram. O passo
+  `scripts/og.mjs` republica esse card como `og.png`, porque hospedagens
+  estáticas servem arquivo sem extensão como `octet-stream` e a prévia
+  não renderiza.
 - JSON-LD `AutoRepair` (painel de negócio local), `FAQPage` (acordeão nos
   resultados de busca) e `WebSite`, todos gerados a partir de `site.ts`.
 - `sitemap.xml`, `robots.txt` e `manifest.webmanifest` automáticos.
@@ -175,4 +194,7 @@ src/
 │   ├── Analytics.tsx  StructuredData.tsx
 ├── content/site.ts             ← conteúdo do site (edite aqui)
 └── lib/                        analytics, hooks, links
+
+scripts/og.mjs                  publica o card de OpenGraph como og.png
+.github/workflows/deploy.yml    build + publicação no GitHub Pages
 ```

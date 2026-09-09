@@ -1,0 +1,72 @@
+name: Deploy no GitHub Pages
+
+# Publica a landing page em https://vinikunze.github.io/america-autocenter/
+#
+# Pré-requisito, feito uma única vez pela interface do GitHub:
+#   Settings → Pages → Source: "GitHub Actions"
+# (No modo "Deploy from a branch" o GitHub renderiza o README com Jekyll
+#  em vez de servir o site.)
+
+on:
+  push:
+    branches:
+      # Após o merge do PR e a troca da branch padrão, deixe apenas `main`.
+      - main
+      - claude/amcustodio-landing-page-ggewo9
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Uma publicação por vez; execuções em fila são descartadas, mas a que
+# estiver no ar nunca é interrompida no meio.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Página de projeto é servida em subdiretório: sem o basePath,
+      # todo CSS/JS aponta para a raiz do domínio e retorna 404.
+      NEXT_PUBLIC_BASE_PATH: /america-autocenter
+      NEXT_PUBLIC_SITE_URL: https://vinikunze.github.io/america-autocenter
+      # IDs de rastreamento: cadastre em Settings → Secrets and variables
+      # → Actions → Variables. Vazios, nenhum script é carregado.
+      NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID }}
+      NEXT_PUBLIC_GOOGLE_ADS_ID: ${{ vars.NEXT_PUBLIC_GOOGLE_ADS_ID }}
+      NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL: ${{ vars.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL }}
+      NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.NEXT_PUBLIC_META_PIXEL_ID }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Instalar dependências
+        run: npm ci
+
+      - name: Checar tipos
+        run: npm run typecheck
+
+      - name: Build (export estático)
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
