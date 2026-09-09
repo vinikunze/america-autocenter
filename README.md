@@ -11,24 +11,28 @@ conversão devidamente rastreada.
 
 ## ⚠️ Antes de subir a campanha — dados a confirmar
 
-Os dados do negócio foram extraídos de registros públicos (CNPJ, cadastros
-comerciais) porque o perfil do Instagram não pôde ser lido automaticamente.
-**Confirme os itens abaixo com o cliente antes de investir em mídia** — todos
-estão reunidos em `src/content/site.ts` e marcados com `// CONFIRMAR`:
+A foto da fachada enviada pelo cliente resolveu duas pendências: o **telefone
+do totem confere** com o número do site, e o totem **lista os serviços que a
+oficina de fato executa** — a lista da página agora é exatamente essa. O que
+resta confirmar está marcado com `// CONFIRMAR` em `src/content/site.ts`:
 
 | Item | Valor no site | Observação |
 |---|---|---|
-| Telefone / WhatsApp | `(66) 9 9260-7556` | O cadastro público traz `66 9260-7556` (8 dígitos). Assumimos o `9` inicial do celular. **É para cá que vão 100% dos leads.** |
-| Horário de atendimento | Seg–Sex 8h–18h · Sáb 8h–12h | Presumido pelo padrão do setor. |
+| Horário de atendimento | Seg–Sex 8h–18h · Sáb 8h–12h | Presumido pelo padrão do setor — **único dado ainda sem fonte**. |
 | Bairro | não informado | Não consta no cadastro público. |
-| Lista de serviços | 7 serviços | O CNPJ registra apenas comércio de peças (CNAE 4530-7/03). Elétrica e ar-condicionado foram removidos a pedido do cliente. Confirme o restante — anunciar serviço que não existe reprova a conta no Google Ads. |
 | Garantia de 90 dias | usada em 4 pontos do site | Promessa comercial. Só mantenha se o cliente confirmar. |
+| Foto do antes e depois | usada em 2 pontos | Idem: é um compromisso que a oficina passa a ter. |
 | Domínio (`siteUrl`) | `americaautocenter.com.br` | Ajuste ao domínio real; afeta canonical, sitemap e schema. |
 
-**Depoimentos:** a seção existe, mas o array `testimonials` nasce vazio e a
-seção some do site enquanto estiver assim. Preencha apenas com avaliações reais
-(Google, Instagram). Depoimento inventado derruba a confiança e viola as
-políticas de anúncio do Google e da Meta.
+**Já confirmado pela fachada:** telefone `(66) 9 9260-7556`, endereço
+`Rua das Primaveras, 7354` e os sete serviços (alinhamento e balanceamento,
+troca de óleo, freios, suspensão, revisão geral, escapamento e limpeza de
+bicos).
+
+**Depoimentos e prova social:** os arrays `testimonials` e `socialProof`
+nascem vazios e somem do site enquanto estiverem assim. Preencha só com
+avaliações e números reais. Nota do Google e "clientes atendidos" inventados
+derrubam a confiança e violam as políticas de anúncio do Google e da Meta.
 
 ---
 
@@ -82,17 +86,22 @@ Nenhum componente precisa ser tocado para atualizar texto.
 **Cores e tipografia:** bloco `@theme` em `src/app/globals.css`. Base preta com
 o vermelho da marca como única cor de ação, seções escuras alternando com uma
 seção clara, cantos generosos e faixa zebrada como divisor.
-**Logo:** `src/components/Logo.tsx` (monograma provisório em SVG — substituir
-pelo logotipo oficial) e `src/app/icon.svg` (favicon).
+**Marca:** o logotipo oficial está em `public/marca/`. `logo.png` mantém as
+cores originais (para fundo claro) e `logo-escuro.png` é a variante do site — o
+cinza `#6c7577` do contorno do carro e do "AUTO CENTER" não tem contraste
+suficiente sobre o preto, então nessa versão ele é clareado; o vermelho fica
+intacto nas duas. O favicon (`src/app/icon.png`) usa a silhueta do carro em
+branco sobre o vermelho da marca, com o traço engrossado para continuar legível
+a 16 px. O vermelho `#d7101a` do tema foi amostrado do próprio arquivo da logo.
 
 ---
 
 ## Fotos
 
-**A página foi desenhada para foto real e ainda não tem nenhuma.** Enquanto
-`src` estiver vazio, cada espaço mostra um bloco gráfico no tom da seção — o
-layout não quebra, mas metade do impacto se perde. Priorize isso antes de
-rodar tráfego.
+**A fachada já está publicada.** Os demais espaços seguem vazios: enquanto
+`src` estiver em branco, o slot é simplesmente omitido (nos cards de serviço) ou
+mostra um bloco gráfico no tom da seção. O layout não quebra, mas cada foto que
+entra aumenta o impacto — priorize isso antes de escalar a verba.
 
 Para publicar: salve o arquivo em `public/fotos/`, preencha `src` em
 `src/content/site.ts` (ex.: `"/fotos/fachada.jpg"`) e escreva o `alt`
@@ -100,12 +109,16 @@ descrevendo a cena.
 
 | Slot | Onde aparece | Proporção | Sugestão |
 |---|---|---|---|
-| `photos.fachada` | mosaico do bloco de destaque | 4:3 | fachada ou box principal |
+| `photos.fachada` | bloco de destaque | 16:9 | ✅ publicada |
 | `photos.atendimento` | mosaico | 4:3 | mecânico trabalhando no veículo |
+
+Com uma foto só, o bloco de destaque a exibe em tamanho grande; a partir de
+duas, ele vira mosaico automaticamente.
+
 | `photos.pecas` | mosaico | 4:3 | prateleira de peças / estoque |
 | `photos.pneus` | mosaico | 4:3 | pneu sendo montado |
 | `photos.bastidor` | fundo de "Por que escolher" | 16:9 | motor ou box, será escurecido |
-| `servicePhotos.*` | topo de cada card de serviço | 16:10 | uma por serviço |
+| `servicePhotos.*` | topo de cada card de serviço | 16:10 | uma por serviço (o card fica só com ícone enquanto não houver) |
 
 Exporte em JPG ou WebP com cerca de 200 KB cada — o export é estático e não
 há otimização de imagem em runtime. Fora da proporção indicada, a imagem é
@@ -216,7 +229,7 @@ src/
 │   ├── globals.css             design system (tokens, utilitários, motion)
 │   ├── opengraph-image.tsx     card de compartilhamento
 │   ├── sitemap.ts / robots.ts / manifest.ts
-│   └── icon.svg
+│   └── icon.png  apple-icon.png    favicon a partir da logo
 ├── components/
 │   ├── sections/               Hero, FeatureBar, Showcase, Services,
 │   │                           Differentials, Process, Faq, Contact, ...
@@ -228,6 +241,9 @@ src/
 │   ├── Analytics.tsx  StructuredData.tsx
 ├── content/site.ts             ← conteúdo do site (edite aqui)
 └── lib/                        analytics, hooks, links
+
+public/marca/                   logotipo oficial (claro, escuro e original)
+public/fotos/                   fotos da oficina
 
 scripts/og.mjs                  publica o card de OpenGraph como og.png
 .github/workflows/deploy.yml    build + publicação no GitHub Pages

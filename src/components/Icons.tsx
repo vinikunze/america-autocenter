@@ -72,13 +72,22 @@ export const Icon = {
       <path d="M12 3.4v5.8M4.2 15.4l5.4-2.2M19.8 15.4l-5.4-2.2" />
     </svg>
   ),
-  /** Pneu com banda de rodagem — pneus e borracharia. */
-  tire: (p: Props) => (
+  /** Ponteira de escapamento com fumaça — escapamento. */
+  exhaust: (p: Props) => (
     <svg {...base} {...p}>
-      <circle cx="12" cy="12" r="8.8" />
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 3.2v3.4M12 17.4v3.4M3.2 12h3.4M17.4 12h3.4" />
-      <path d="m5.8 5.8 2.4 2.4M18.2 18.2l-2.4-2.4M18.2 5.8l-2.4 2.4M5.8 18.2l2.4-2.4" />
+      <path d="M3 14.6h11.4a3 3 0 0 1 3 3v1.2H6a3 3 0 0 1-3-3z" />
+      <path d="M17.4 15.4h3.1a1 1 0 0 1 1 1v1.4a1 1 0 0 1-1 1h-3.1" />
+      <path d="M6.6 11.4c0-1.3 1.6-1.3 1.6-2.6S6.6 7.5 6.6 6.2" />
+      <path d="M11 11.4c0-1.3 1.6-1.3 1.6-2.6S11 7.5 11 6.2" />
+    </svg>
+  ),
+  /** Bico injetor pulverizando — limpeza de bicos. */
+  injector: (p: Props) => (
+    <svg {...base} {...p}>
+      <path d="M9.4 2.6h5.2v4.2l1.2 2v4.4H8.2V8.8l1.2-2z" />
+      <path d="M10.4 13.2v2.2h3.2v-2.2" />
+      <path d="M12 17.2v4.2" />
+      <path d="M9 18.4 7.6 21M15 18.4 16.4 21" />
     </svg>
   ),
   /** Escudo com visto — orçamento antes, sempre. */

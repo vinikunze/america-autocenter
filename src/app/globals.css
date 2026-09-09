@@ -28,11 +28,14 @@
   --color-mist: #a9a9b6;
   --color-slate-soft: #7a7a88;
 
-  /* --- Vermelho da marca: única cor de ação do site --- */
-  --color-brand-400: #ff4d4d;
-  --color-brand-500: #e01f2d;
-  --color-brand-600: #c4121f;
-  --color-brand-700: #8e0b15;
+  /* --- Vermelho da marca, amostrado do arquivo da logo (#d7101a) --- */
+  --color-brand-400: #f5424a;
+  --color-brand-500: #d7101a;
+  --color-brand-600: #b00a12;
+  --color-brand-700: #7d060c;
+
+  /* --- Cinza da logo, usado como apoio --- */
+  --color-brand-gray: #6c7577;
 
   --color-signal: #22c55e;
 
@@ -50,7 +53,7 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --header-h: 4.75rem;
+    --header-h: 5.25rem;
   }
 
   html {
@@ -170,7 +173,7 @@
    um retângulo escuro no meio de uma seção clara pesa demais. */
 .photo-fallback-light {
   background:
-    radial-gradient(120% 90% at 20% 0%, rgba(224, 31, 45, 0.07), transparent 62%),
+    radial-gradient(120% 90% at 20% 0%, rgba(215, 16, 26, 0.07), transparent 62%),
     repeating-linear-gradient(
       -45deg,
       rgba(20, 20, 26, 0.035) 0 3px,
@@ -181,7 +184,7 @@
 
 .photo-fallback {
   background:
-    radial-gradient(120% 90% at 20% 0%, rgba(224, 31, 45, 0.16), transparent 60%),
+    radial-gradient(120% 90% at 20% 0%, rgba(215, 16, 26, 0.16), transparent 60%),
     repeating-linear-gradient(
       -45deg,
       rgba(255, 255, 255, 0.022) 0 3px,

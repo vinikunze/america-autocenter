@@ -1,13 +1,12 @@
 const items = [
-  "Peças e acessórios",
-  "Troca de óleo",
-  "Freios",
-  "Suspensão",
-  "Alinhamento 3D",
+  "Alinhamento",
   "Balanceamento",
-  "Revisão preventiva",
-  "Pneus e borracharia",
-  "Peças com nota fiscal",
+  "Escapamento",
+  "Freios",
+  "Limpeza de bicos",
+  "Revisão geral",
+  "Suspensão",
+  "Troca de óleo",
 ];
 
 /**

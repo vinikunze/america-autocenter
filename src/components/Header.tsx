@@ -33,7 +33,7 @@ export function Header() {
       >
         <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4">
           <a href="#topo" aria-label="América Auto Center — início" className="shrink-0">
-            <Logo />
+            <Logo className="h-11 sm:h-13" />
           </a>
 
           <nav aria-label="Navegação principal" className="hidden lg:block">
@@ -107,7 +107,7 @@ export function Header() {
           }`}
         >
           <div className="flex items-center justify-between">
-            <Logo />
+            <Logo className="h-10" />
             <button
               type="button"
               onClick={() => setOpen(false)}

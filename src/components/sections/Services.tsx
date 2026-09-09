@@ -23,8 +23,8 @@ export function Services() {
             <span className="text-accent">em um endereço só</span>
           </h2>
           <p className="text-[1.02rem] leading-relaxed text-[color:var(--color-paper-muted)]">
-            Da peça ao serviço executado. Você não precisa rodar a cidade atrás
-            de três fornecedores diferentes para resolver um problema só.
+            Do diagnóstico ao serviço entregue. Você não precisa rodar a cidade
+            atrás de três oficinas diferentes para resolver um problema só.
           </p>
         </Reveal>
 
@@ -32,19 +32,23 @@ export function Services() {
           {services.map((service, i) => (
             <Reveal as="li" key={service.id} delay={(i % 3) * 80}>
               <article className="surface-paper group flex h-full flex-col overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-[0_18px_46px_-22px_rgba(16,16,24,0.45)]">
-                <Photo
-                  photo={servicePhotos[service.id] ?? { src: "", alt: service.title }}
-                  ratio="16/10"
-                  tone="light"
-                  rounded=""
-                  className="border-0 border-b border-[color:var(--color-paper-line)]"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
+                {/* Sem foto cadastrada, o card fica só com ícone e texto —
+                    melhor do que sete retângulos vazios em sequência. */}
+                {servicePhotos[service.id]?.src ? (
+                  <Photo
+                    photo={servicePhotos[service.id]}
+                    ratio="16/10"
+                    tone="light"
+                    rounded=""
+                    className="border-0 border-b border-[color:var(--color-paper-line)]"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                ) : null}
 
                 <div className="flex flex-1 flex-col p-6">
                   <div className="flex items-center gap-2.5">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-500">
-                      <ServiceIcon name={service.icon} className="h-[1.15rem] w-[1.15rem]" />
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500/10 text-brand-500">
+                      <ServiceIcon name={service.icon} className="h-[1.35rem] w-[1.35rem]" />
                     </span>
                     <h3 className="text-[1.18rem] text-[color:var(--color-paper-ink)]">
                       {service.title}

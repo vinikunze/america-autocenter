@@ -4,6 +4,11 @@ import { Eyebrow } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { WhatsAppButton } from "@/components/CTA";
 
+/** Só entram no mosaico os slots que já têm arquivo cadastrado. */
+const mosaico = [photos.fachada, photos.atendimento, photos.pecas, photos.pneus].filter(
+  (foto) => foto.src.length > 0,
+);
+
 const promessas = [
   ["Orçamento fechado", "no WhatsApp antes de qualquer reparo"],
   ["Peça velha na sua mão", "e foto do antes e depois"],
@@ -60,18 +65,34 @@ export function Showcase() {
           </Reveal>
         </div>
 
-        {/* Mosaico: duas colunas desencontradas, como vitrine da oficina. */}
+        {/*
+          Mosaico adaptativo: com uma foto só, ela ocupa o bloco inteiro;
+          a partir de duas, vira grade. Evita retângulo vazio ao lado de
+          foto real enquanto o resto do material não chega.
+        */}
         <Reveal delay={160}>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col gap-4">
-              <Photo photo={photos.fachada} ratio="4/3" sizes="(max-width: 1024px) 45vw, 26vw" />
-              <Photo photo={photos.pecas} ratio="4/3" sizes="(max-width: 1024px) 45vw, 26vw" />
+          {mosaico.length <= 1 ? (
+            <Photo
+              photo={mosaico[0] ?? photos.fachada}
+              ratio="16/9"
+              priority
+              rounded="rounded-3xl"
+              sizes="(max-width: 1024px) 100vw, 52vw"
+            />
+          ) : (
+            <div className="grid grid-cols-2 gap-4">
+              {mosaico.map((foto, i) => (
+                <Photo
+                  key={foto.alt}
+                  photo={foto}
+                  ratio="4/3"
+                  priority={i === 0}
+                  className={i % 2 === 1 ? "mt-8" : undefined}
+                  sizes="(max-width: 1024px) 45vw, 26vw"
+                />
+              ))}
             </div>
-            <div className="flex flex-col gap-4 pt-8">
-              <Photo photo={photos.atendimento} ratio="4/3" sizes="(max-width: 1024px) 45vw, 26vw" />
-              <Photo photo={photos.pneus} ratio="4/3" sizes="(max-width: 1024px) 45vw, 26vw" />
-            </div>
-          </div>
+          )}
         </Reveal>
       </div>
     </section>

@@ -26,7 +26,7 @@ export function Footer() {
       <div className="container-page py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr]">
           <div>
-            <Logo />
+            <Logo className="h-12" />
             <p className="mt-5 max-w-xs text-[0.9rem] leading-relaxed text-slate-soft">
               {business.tagline}. Peças, acessórios e serviços com diagnóstico
               honesto e garantia por escrito.

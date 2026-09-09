@@ -1,44 +1,28 @@
-import type { SVGProps } from "react";
-
 /**
- * Marca provisória: monograma "A" em escudo, construído em SVG para
- * ficar nítido em qualquer densidade de tela e pesar ~1 KB.
- * ⚠️ Substituir pelo logotipo oficial quando o cliente enviar o arquivo.
+ * Logotipo oficial da América Auto Center.
+ *
+ * `logo-escuro.png` é a variante para fundo escuro: o cinza original
+ * (#6c7577) do contorno do carro e do "AUTO CENTER" tem contraste baixo
+ * demais sobre o preto do site, então nessa versão ele é clareado. O
+ * vermelho da marca fica intacto nas duas. `logo.png` mantém as cores
+ * originais, para uso sobre fundo claro.
  */
-export function LogoMark(props: SVGProps<SVGSVGElement>) {
+export function Logo({
+  className = "",
+  variant = "dark",
+}: {
+  className?: string;
+  /** "dark" = para fundo escuro. "light" = cores originais. */
+  variant?: "dark" | "light";
+}) {
   return (
-    <svg viewBox="0 0 40 40" fill="none" aria-hidden {...props}>
-      <path
-        d="M20 1.8 36.5 7.6v12.1c0 8.7-6.6 16.6-16.5 18.5C10.1 36.3 3.5 28.4 3.5 19.7V7.6Z"
-        fill="#e01f2d"
-      />
-      <path
-        d="M20 4.6 33.7 9.4v10.3c0 7.2-5.5 13.8-13.7 15.4C11.8 33.5 6.3 26.9 6.3 19.7V9.4Z"
-        fill="none"
-        stroke="#f7f7f9"
-        strokeOpacity="0.28"
-        strokeWidth="1.1"
-      />
-      <path
-        d="M20 10.5 27.8 28h-4.3l-1.35-3.35h-4.3L16.5 28h-4.3Zm0 6.9-1.4 3.6h2.8Z"
-        fill="#0b0b0d"
-      />
-    </svg>
-  );
-}
-
-export function Logo({ className = "" }: { className?: string }) {
-  return (
-    <span className={`flex items-center gap-2.5 ${className}`}>
-      <LogoMark className="h-9 w-9 shrink-0" />
-      <span className="flex flex-col leading-none">
-        <span className="text-[1.02rem] font-extrabold leading-none tracking-tight text-chalk">
-          AMÉRICA
-        </span>
-        <span className="mt-1 text-[0.56rem] font-bold uppercase tracking-[0.3em] text-brand-500">
-          Auto Center
-        </span>
-      </span>
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={variant === "dark" ? "/marca/logo-escuro.png" : "/marca/logo.png"}
+      alt="América Auto Center"
+      width={520}
+      height={261}
+      className={`h-11 w-auto ${className}`}
+    />
   );
 }

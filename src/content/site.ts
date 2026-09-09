@@ -36,11 +36,7 @@ export const business = {
     mapsQuery: "Rua das Primaveras, 7354 - Sinop - MT, 78550-617",
   },
 
-  /**
-   * CONFIRMAR: o cadastro público registra 66 9260-7556 (8 dígitos).
-   * Celulares em MT têm 9 dígitos, então assumimos o 9 inicial.
-   * Confirme antes de publicar — este número recebe 100% dos leads.
-   */
+  /** Confirmado pelo totem da fachada: (66) 9 9260-7556. */
   phone: {
     display: "(66) 9 9260-7556",
     /** Formato E.164 sem símbolos, usado em tel: e wa.me */
@@ -143,10 +139,10 @@ export type Photo = {
 export const photos = {
   /** 4:3 — fachada ou box principal. Aparece no bloco de destaque. */
   fachada: {
-    src: "",
-    alt: "Fachada da América Auto Center em Sinop",
+    src: "/fotos/fachada.jpg",
+    alt: "Fachada da América Auto Center na Rua das Primaveras, em Sinop",
     caption: "Nossa estrutura",
-    legend: "Rua das Primaveras, 7354",
+    legend: "Rua das Primaveras, 7354 — Sinop/MT",
   },
   /** 4:3 — atendimento no box, mecânico trabalhando. */
   atendimento: {
@@ -178,13 +174,13 @@ export const photos = {
 
 /** Foto de topo de cada card de serviço. 16:10. Vazio = bloco gráfico. */
 export const servicePhotos: Record<string, Photo> = {
-  pecas: { src: "", alt: "Peças automotivas novas em estoque" },
-  revisao: { src: "", alt: "Checklist de revisão sendo preenchido" },
+  alinhamento: { src: "", alt: "Alinhamento sendo feito em um veículo" },
   oleo: { src: "", alt: "Troca de óleo em veículo suspenso" },
   freios: { src: "", alt: "Disco e pastilha de freio sendo trocados" },
   suspensao: { src: "", alt: "Amortecedor sendo substituído" },
-  alinhamento: { src: "", alt: "Alinhamento 3D em execução" },
-  pneus: { src: "", alt: "Pneu novo sendo montado" },
+  revisao: { src: "", alt: "Revisão geral sendo feita no box" },
+  escapamento: { src: "", alt: "Escapamento sendo soldado" },
+  bicos: { src: "", alt: "Bicos injetores em teste de limpeza" },
 };
 
 /* --------------------------------------------------------------------- */
@@ -205,60 +201,60 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    id: "pecas",
-    icon: "piston",
-    title: "Peças e acessórios",
+    id: "alinhamento",
+    icon: "steering",
+    title: "Alinhamento e balanceamento",
     description:
-      "Linha completa de peças novas para carros e utilitários, das marcas que o mecânico confia — com pronta entrega.",
-    points: ["Marcas originais e genuínas", "Consulta por placa", "Pronta entrega"],
-  },
-  {
-    id: "revisao",
-    icon: "clipboard",
-    title: "Revisão preventiva",
-    description:
-      "Checklist completo de 30 itens antes da viagem: você descobre o problema antes que ele custe caro.",
-    points: ["Checklist de 30 itens", "Relatório com fotos", "Orçamento na hora"],
+      "Geometria conferida e rodas equilibradas: o pneu dura mais, o volante para de vibrar e o carro anda reto.",
+    points: ["Alinhamento", "Balanceamento", "Rodízio de pneus"],
   },
   {
     id: "oleo",
     icon: "oil",
     title: "Troca de óleo e filtros",
     description:
-      "Óleo na especificação exata do fabricante, com troca de filtros e descarte ambientalmente correto.",
-    points: ["Lubrificantes de linha premium", "Feito em até 40 min", "Selo de controle"],
+      "Óleo na especificação do fabricante, troca dos filtros e descarte do usado feito da forma correta.",
+    points: ["Óleo na especificação", "Filtros", "Descarte correto"],
   },
   {
     id: "freios",
     icon: "brake",
     title: "Freios",
     description:
-      "Pastilhas, discos, tambores e fluido. O item que não admite economia — e onde a peça certa faz toda a diferença.",
-    points: ["Medição de disco", "Sangria do sistema", "Teste em pista"],
+      "Pastilhas, discos, tambores e fluido. É o item que não admite economia — e onde a peça certa faz toda a diferença.",
+    points: ["Medição de disco", "Sangria do sistema", "Teste antes de entregar"],
   },
   {
     id: "suspensao",
     icon: "shock",
-    title: "Suspensão e direção",
+    title: "Suspensão",
     description:
       "Amortecedores, molas, bandejas, pivôs e terminais. Fim do barulho na lombada e do carro puxando para o lado.",
-    points: ["Diagnóstico de ruído", "Peças reforçadas", "Ideal para estradas de MT"],
+    points: ["Diagnóstico de ruído", "Peças reforçadas", "Feita para estrada de MT"],
   },
   {
-    id: "alinhamento",
-    icon: "steering",
-    title: "Alinhamento e balanceamento",
+    id: "revisao",
+    icon: "clipboard",
+    title: "Revisão geral",
     description:
-      "Geometria conferida por computador: pneu dura mais, volante para de vibrar e o carro anda reto.",
-    points: ["Alinhamento 3D", "Balanceamento das 4 rodas", "Rodízio de pneus"],
+      "Checagem completa antes da viagem ou da revisão de rotina: você descobre o problema antes que ele custe caro.",
+    points: ["Checklist completo", "Prioridade do que é urgente", "Orçamento na hora"],
   },
   {
-    id: "pneus",
-    icon: "tire",
-    title: "Pneus e borracharia",
+    id: "escapamento",
+    icon: "exhaust",
+    title: "Escapamento",
     description:
-      "Montagem, conserto, calibragem e venda de pneus para carro, picape e utilitário — com garantia de procedência.",
-    points: ["Montagem e conserto", "Calibragem com nitrogênio", "Pronto atendimento"],
+      "Solda, troca de silencioso, catalisador e coletor. Resolve o barulho, o cheiro dentro do carro e a reprovação na vistoria.",
+    points: ["Solda e reparo", "Troca de silencioso", "Fim do ronco"],
+  },
+  {
+    id: "bicos",
+    icon: "injector",
+    title: "Limpeza de bicos",
+    description:
+      "Bicos injetores limpos e testados: motor volta a pegar liso, consumo cai e a marcha lenta para de oscilar.",
+    points: ["Limpeza e teste", "Menos consumo", "Motor mais macio"],
   },
 ];
 
@@ -377,7 +373,8 @@ export type IconName =
   | "brake"
   | "shock"
   | "steering"
-  | "tire"
+  | "exhaust"
+  | "injector"
   | "shield"
   | "camera"
   | "stamp"
