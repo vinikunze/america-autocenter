@@ -109,7 +109,7 @@ export type Service = {
 export const services: Service[] = [
   {
     id: "pecas",
-    icon: "gear",
+    icon: "piston",
     title: "Peças e acessórios",
     description:
       "Linha completa de peças novas para carros e utilitários, das marcas que o mecânico confia — com pronta entrega.",
@@ -117,7 +117,7 @@ export const services: Service[] = [
   },
   {
     id: "revisao",
-    icon: "check",
+    icon: "clipboard",
     title: "Revisão preventiva",
     description:
       "Checklist completo de 30 itens antes da viagem: você descobre o problema antes que ele custe caro.",
@@ -125,7 +125,7 @@ export const services: Service[] = [
   },
   {
     id: "oleo",
-    icon: "droplet",
+    icon: "oil",
     title: "Troca de óleo e filtros",
     description:
       "Óleo na especificação exata do fabricante, com troca de filtros e descarte ambientalmente correto.",
@@ -133,7 +133,7 @@ export const services: Service[] = [
   },
   {
     id: "freios",
-    icon: "disc",
+    icon: "brake",
     title: "Freios",
     description:
       "Pastilhas, discos, tambores e fluido. O item que não admite economia — e onde a peça certa faz toda a diferença.",
@@ -141,7 +141,7 @@ export const services: Service[] = [
   },
   {
     id: "suspensao",
-    icon: "spring",
+    icon: "shock",
     title: "Suspensão e direção",
     description:
       "Amortecedores, molas, bandejas, pivôs e terminais. Fim do barulho na lombada e do carro puxando para o lado.",
@@ -149,35 +149,19 @@ export const services: Service[] = [
   },
   {
     id: "alinhamento",
-    icon: "target",
+    icon: "steering",
     title: "Alinhamento e balanceamento",
     description:
       "Geometria conferida por computador: pneu dura mais, volante para de vibrar e o carro anda reto.",
     points: ["Alinhamento 3D", "Balanceamento das 4 rodas", "Rodízio de pneus"],
   },
   {
-    id: "eletrica",
-    icon: "bolt",
-    title: "Elétrica e injeção",
-    description:
-      "Scanner automotivo para leitura de falhas, bateria, alternador, partida e todo o chicote elétrico.",
-    points: ["Leitura de erros no scanner", "Teste de bateria", "Correção de mau contato"],
-  },
-  {
     id: "pneus",
-    icon: "circle",
+    icon: "tire",
     title: "Pneus e borracharia",
     description:
       "Montagem, conserto, calibragem e venda de pneus para carro, picape e utilitário — com garantia de procedência.",
     points: ["Montagem e conserto", "Calibragem com nitrogênio", "Pronto atendimento"],
-  },
-  {
-    id: "ar",
-    icon: "snow",
-    title: "Ar-condicionado",
-    description:
-      "Higienização, recarga de gás e reparo de vazamentos. Essencial para o calor de Mato Grosso.",
-    points: ["Recarga de gás", "Troca do filtro de cabine", "Caça-vazamento"],
   },
 ];
 
@@ -199,7 +183,7 @@ export const differentials = [
       "Fotos do antes e depois e a peça velha na sua mão. Transparência não é discurso, é procedimento.",
   },
   {
-    icon: "badge" as IconName,
+    icon: "stamp" as IconName,
     title: "Garantia por escrito",
     description:
       "Peça e mão de obra cobertas por 90 dias. Deu problema no que a gente mexeu, a gente resolve.",
@@ -290,16 +274,14 @@ export const faq = [
 /* --------------------------------------------------------------------- */
 
 export type IconName =
-  | "gear"
-  | "check"
-  | "droplet"
-  | "disc"
-  | "spring"
-  | "target"
-  | "bolt"
-  | "snow"
+  | "piston"
+  | "clipboard"
+  | "oil"
+  | "brake"
+  | "shock"
+  | "steering"
+  | "tire"
   | "shield"
   | "camera"
-  | "badge"
-  | "clock"
-  | "circle";
+  | "stamp"
+  | "clock";

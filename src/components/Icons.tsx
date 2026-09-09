@@ -4,98 +4,111 @@ import type { IconName } from "@/content/site";
 type Props = SVGProps<SVGSVGElement>;
 
 /**
- * Ícones desenhados à mão em stroke de 1.5px para manter o traço
- * coerente em todo o site. Inline = zero requisição extra.
+ * Ícones de oficina, desenhados à mão em stroke de 2px — traço mais
+ * encorpado que o padrão minimalista, para combinar com a linguagem de
+ * ferramenta e placa. Inline = zero requisição extra.
  */
 const base: Props = {
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
-  strokeWidth: 1.5,
+  strokeWidth: 2,
   strokeLinecap: "round",
   strokeLinejoin: "round",
   "aria-hidden": true,
 };
 
 export const Icon = {
-  gear: (p: Props) => (
+  /** Pistão — peças e acessórios. */
+  piston: (p: Props) => (
     <svg {...base} {...p}>
-      <circle cx="12" cy="12" r="3.2" />
-      <path d="M19.4 15a1.6 1.6 0 0 0 .32 1.77l.06.06a1.9 1.9 0 1 1-2.7 2.7l-.05-.06a1.6 1.6 0 0 0-1.78-.32 1.6 1.6 0 0 0-.97 1.47V21a1.9 1.9 0 1 1-3.8 0v-.1a1.6 1.6 0 0 0-1.05-1.46 1.6 1.6 0 0 0-1.77.32l-.06.06a1.9 1.9 0 1 1-2.7-2.7l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-.97H3a1.9 1.9 0 1 1 0-3.8h.1a1.6 1.6 0 0 0 1.46-1.05 1.6 1.6 0 0 0-.32-1.77l-.06-.06a1.9 1.9 0 1 1 2.7-2.7l.06.06a1.6 1.6 0 0 0 1.77.32H9a1.6 1.6 0 0 0 .97-1.47V3a1.9 1.9 0 1 1 3.8 0v.1a1.6 1.6 0 0 0 .97 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a1.9 1.9 0 1 1 2.7 2.7l-.06.06a1.6 1.6 0 0 0-.32 1.77V9a1.6 1.6 0 0 0 1.47.97H21a1.9 1.9 0 1 1 0 3.8h-.1a1.6 1.6 0 0 0-1.47.97z" />
+      <rect x="5" y="2.6" width="14" height="7.2" rx="1.2" />
+      <path d="M6.8 12.2h10.4M6.8 14.8h10.4" />
+      <path d="M9.2 9.8v1.6M14.8 9.8v1.6" />
+      <path d="M12 14.8v3.4" />
+      <circle cx="12" cy="20" r="1.9" />
     </svg>
   ),
-  check: (p: Props) => (
+  /** Prancheta com visto — revisão preventiva. */
+  clipboard: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M9 11.5 11.5 14 15.5 9" />
-      <path d="M12 2.75 4.5 5.6v5.6c0 4.5 3.1 8.7 7.5 10.05 4.4-1.35 7.5-5.55 7.5-10.05V5.6z" />
+      <path d="M8.4 4.2H6.6A1.6 1.6 0 0 0 5 5.8v13.6a1.6 1.6 0 0 0 1.6 1.6h10.8a1.6 1.6 0 0 0 1.6-1.6V5.8a1.6 1.6 0 0 0-1.6-1.6h-1.8" />
+      <rect x="8.4" y="2.4" width="7.2" height="3.6" rx="1.1" />
+      <path d="m8.8 13.4 2.2 2.2 4.2-4.4" />
     </svg>
   ),
-  droplet: (p: Props) => (
+  /** Galão de óleo — troca de óleo e filtros. */
+  oil: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M12 2.7s6 6.2 6 10.1a6 6 0 0 1-12 0C6 8.9 12 2.7 12 2.7Z" />
-      <path d="M9 13.4a3 3 0 0 0 3 3" />
+      <path d="M4.4 9.4h9.2a1.4 1.4 0 0 1 1.4 1.4v8a1.4 1.4 0 0 1-1.4 1.4H4.4A1.4 1.4 0 0 1 3 18.8v-8a1.4 1.4 0 0 1 1.4-1.4Z" />
+      <path d="M6.6 9.4V7.2h4.8v2.2" />
+      <path d="M15 12.4h3.4l2.6-4.2" />
+      <path d="M19.4 4.6v3.6" />
     </svg>
   ),
-  disc: (p: Props) => (
+  /** Disco de freio com pinça — freios. */
+  brake: (p: Props) => (
     <svg {...base} {...p}>
-      <circle cx="12" cy="12" r="9" />
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" />
+      <circle cx="11" cy="12" r="8.2" />
+      <circle cx="11" cy="12" r="3" />
+      <path d="M11 3.8v2.4M11 17.8v2.4M2.8 12h2.4M16.8 12h2.4" />
+      <path d="M18.6 7.4a2 2 0 0 1 2 2v5.2a2 2 0 0 1-2 2" />
     </svg>
   ),
-  spring: (p: Props) => (
+  /** Amortecedor — suspensão e direção. */
+  shock: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M6 3h12M6 21h12" />
-      <path d="M7 6h10l-10 3h10l-10 3h10l-10 3h10" />
+      <path d="M12 2.4v3.2M12 18.4v3.2" />
+      <circle cx="12" cy="2.4" r="0.1" />
+      <path d="M8.6 5.6h6.8M8.6 18.4h6.8" />
+      <path d="M9 8.2h6l-6 2.4h6l-6 2.4h6l-6 2.4h6" />
     </svg>
   ),
-  target: (p: Props) => (
+  /** Volante — alinhamento e balanceamento. */
+  steering: (p: Props) => (
     <svg {...base} {...p}>
-      <circle cx="12" cy="12" r="8.5" />
-      <circle cx="12" cy="12" r="4.2" />
-      <path d="M12 1.8v3.4M12 18.8v3.4M1.8 12h3.4M18.8 12h3.4" />
+      <circle cx="12" cy="12" r="8.6" />
+      <circle cx="12" cy="12" r="2.8" />
+      <path d="M12 3.4v5.8M4.2 15.4l5.4-2.2M19.8 15.4l-5.4-2.2" />
     </svg>
   ),
-  bolt: (p: Props) => (
+  /** Pneu com banda de rodagem — pneus e borracharia. */
+  tire: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M13.3 2 4.6 13.1h6.2L10.1 22l8.7-11.1h-6.2z" />
+      <circle cx="12" cy="12" r="8.8" />
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 3.2v3.4M12 17.4v3.4M3.2 12h3.4M17.4 12h3.4" />
+      <path d="m5.8 5.8 2.4 2.4M18.2 18.2l-2.4-2.4M18.2 5.8l-2.4 2.4M5.8 18.2l2.4-2.4" />
     </svg>
   ),
-  snow: (p: Props) => (
-    <svg {...base} {...p}>
-      <path d="M12 2v20M2.9 7l18.2 10M21.1 7 2.9 17" />
-      <path d="M12 6.2 9.6 4M12 6.2 14.4 4M12 17.8 9.6 20M12 17.8l2.4 2.2" />
-    </svg>
-  ),
+  /** Escudo com visto — orçamento antes, sempre. */
   shield: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M12 2.7 4.6 5.5v5.8c0 4.5 3.1 8.7 7.4 10 4.3-1.3 7.4-5.5 7.4-10V5.5z" />
-      <path d="M9.2 12.1 11.3 14.2l3.6-4.1" />
+      <path d="M12 2.4 4.2 5.4v5.9c0 4.7 3.2 9 7.8 10.3 4.6-1.3 7.8-5.6 7.8-10.3V5.4z" />
+      <path d="m8.8 11.8 2.2 2.2 4.2-4.4" />
     </svg>
   ),
+  /** Câmera — fotos do antes e depois. */
   camera: (p: Props) => (
     <svg {...base} {...p}>
-      <path d="M3.5 8.5h3l1.6-2.4h6.8l1.6 2.4h3a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5h-16A1.5 1.5 0 0 1 2 18V10a1.5 1.5 0 0 1 1.5-1.5Z" />
-      <circle cx="12" cy="13.6" r="3.4" />
+      <path d="M3.4 8.2h3.2l1.7-2.4h7.4l1.7 2.4h3.2a1.4 1.4 0 0 1 1.4 1.4v8.4a1.4 1.4 0 0 1-1.4 1.4H3.4A1.4 1.4 0 0 1 2 18V9.6a1.4 1.4 0 0 1 1.4-1.4Z" />
+      <circle cx="12" cy="13.6" r="3.6" />
     </svg>
   ),
-  badge: (p: Props) => (
+  /** Carimbo em documento — garantia por escrito. */
+  stamp: (p: Props) => (
     <svg {...base} {...p}>
-      <circle cx="12" cy="9.3" r="6.3" />
-      <path d="m8.4 14.6-1.3 6.4 4.9-2.6 4.9 2.6-1.3-6.4" />
+      <path d="M6 2.8h8l4 4v14.4H6z" />
+      <path d="M13.6 2.8v4.4H18" />
+      <circle cx="12" cy="14.6" r="3.2" />
+      <path d="m10.6 14.6 1 1 1.8-2" />
     </svg>
   ),
-  circle: (p: Props) => (
-    <svg {...base} {...p}>
-      <circle cx="12" cy="12" r="9.2" />
-      <circle cx="12" cy="12" r="4.6" />
-      <path d="M12 2.8v4.6M12 16.6v4.6M2.8 12h4.6M16.6 12h4.6" />
-    </svg>
-  ),
+  /** Relógio — agilidade. */
   clock: (p: Props) => (
     <svg {...base} {...p}>
       <circle cx="12" cy="12" r="9" />
-      <path d="M12 6.8V12l3.4 2" />
+      <path d="M12 6.6V12l3.6 2.2" />
     </svg>
   ),
 } satisfies Record<IconName, (p: Props) => React.ReactElement>;
@@ -124,7 +137,7 @@ export const InstagramIcon = (p: Props) => (
   <svg {...base} {...p}>
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4" />
-    <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+    <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
   </svg>
 );
 
@@ -137,7 +150,7 @@ export const PinIcon = (p: Props) => (
 
 export const MailIcon = (p: Props) => (
   <svg {...base} {...p}>
-    <rect x="2.5" y="4.5" width="19" height="15" rx="2.5" />
+    <rect x="2.5" y="4.5" width="19" height="15" rx="2" />
     <path d="m3.5 7 8.5 6 8.5-6" />
   </svg>
 );
@@ -169,5 +182,12 @@ export const MenuIcon = (p: Props) => (
 export const CloseIcon = (p: Props) => (
   <svg {...base} {...p}>
     <path d="M6 6l12 12M18 6 6 18" />
+  </svg>
+);
+
+/** Chave de boca — usada no emblema do hero. */
+export const WrenchIcon = (p: Props) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...p}>
+    <path d="M20.3 5.4a5.6 5.6 0 0 1-7.1 7.1l-6.4 6.4a2.2 2.2 0 0 1-3.1-3.1l6.4-6.4a5.6 5.6 0 0 1 7.1-7.1l-3 3 .3 2.8 2.8.3z" />
   </svg>
 );

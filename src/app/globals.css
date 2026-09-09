@@ -2,46 +2,47 @@
 
 /* =====================================================================
    DESIGN SYSTEM — América Auto Center
-   Base grafite/preto fosco, tipografia de alto contraste e um único
-   acento vermelho usado exclusivamente em ações e destaques.
+   Linguagem de oficina mecânica: aço quente no lugar do preto azulado,
+   tipografia condensada de placa de garagem, listra de sinalização e
+   textura de chapa xadrez. Vermelho para ação, âmbar para sinalização.
    ===================================================================== */
 
 @theme {
-  /* --- Superfícies --- */
-  --color-ink-950: #08090b;
-  --color-ink-900: #0c0e12;
-  --color-ink-850: #101318;
-  --color-ink-800: #14181e;
-  --color-ink-700: #1c212a;
-  --color-ink-600: #2a313d;
+  /* --- Superfícies: cinzas quentes, com pigmento de graxa --- */
+  --color-ink-950: #121010;
+  --color-ink-900: #1a1716;
+  --color-ink-850: #211d1b;
+  --color-ink-800: #2a2523;
+  --color-ink-700: #3a3330;
+  --color-ink-600: #4d4441;
 
-  /* --- Texto --- */
-  --color-chalk: #f6f7f9;
-  --color-mist: #a8b0bd;
-  --color-slate-soft: #737d8c;
+  /* --- Texto: osso e cinza-poeira, nunca branco puro --- */
+  --color-chalk: #f4efe9;
+  --color-mist: #b0a69e;
+  --color-slate-soft: #837872;
 
-  /* --- Acento --- */
-  --color-brand-400: #ff6a5e;
-  --color-brand-500: #ee3b32;
-  --color-brand-600: #d42a22;
-  --color-brand-700: #a81d18;
+  /* --- Vermelho de ação --- */
+  --color-brand-400: #f2564a;
+  --color-brand-500: #d9342a;
+  --color-brand-600: #b8241c;
+  --color-brand-700: #8c1913;
 
-  /* --- Suporte --- */
-  --color-signal: #35d07f;
+  /* --- Âmbar de sinalização (listras, números de box, destaques) --- */
+  --color-amber-400: #ffc043;
+  --color-amber-500: #f5a524;
 
-  /* --- Tipografia --- */
-  --font-display: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --color-signal: #4caf72;
 
-  /* --- Motion --- */
+  /* --- Tipografia: condensada para placa, humanista para leitura --- */
+  --font-display: var(--font-condensed), "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-
-  /* --- Container --- */
   --spacing-gutter: 1.25rem;
 }
 
 /* --------------------------------------------------------------------- */
-/*  RESET / BASE                                                          */
+/*  BASE                                                                  */
 /* --------------------------------------------------------------------- */
 
 @layer base {
@@ -51,7 +52,7 @@
   }
 
   * {
-    border-color: color-mix(in oklab, var(--color-chalk) 8%, transparent);
+    border-color: color-mix(in oklab, var(--color-chalk) 10%, transparent);
   }
 
   html {
@@ -64,41 +65,41 @@
     background-color: var(--color-ink-950);
     color: var(--color-chalk);
     font-family: var(--font-sans);
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4 {
+  /* Títulos em condensada caixa-alta: leitura de placa de oficina. */
+  h1, h2, h3 {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    line-height: 0.95;
     text-wrap: balance;
   }
 
-  p {
-    text-wrap: pretty;
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.01em;
   }
+
+  p { text-wrap: pretty; }
 
   ::selection {
     background-color: var(--color-brand-500);
     color: #fff;
   }
 
-  /* Foco visível e elegante — acessibilidade sem poluir o visual. */
   :focus-visible {
-    outline: 2px solid var(--color-brand-400);
+    outline: 2px solid var(--color-amber-400);
     outline-offset: 3px;
-    border-radius: 4px;
   }
 
-  /* Barra de rolagem discreta (desktop). */
   @supports selector(::-webkit-scrollbar) {
     ::-webkit-scrollbar { width: 10px; height: 10px; }
     ::-webkit-scrollbar-track { background: var(--color-ink-950); }
     ::-webkit-scrollbar-thumb {
       background: var(--color-ink-700);
-      border-radius: 99px;
       border: 2px solid var(--color-ink-950);
     }
     ::-webkit-scrollbar-thumb:hover { background: var(--color-ink-600); }
@@ -106,7 +107,7 @@
 }
 
 /* --------------------------------------------------------------------- */
-/*  UTILITÁRIOS DE COMPOSIÇÃO                                             */
+/*  UTILITÁRIOS                                                           */
 /* --------------------------------------------------------------------- */
 
 @utility container-page {
@@ -116,72 +117,96 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* Texto com gradiente sutil usado em palavras-chave dos títulos. */
-@utility text-gradient {
-  background-image: linear-gradient(
-    100deg,
-    var(--color-brand-400) 0%,
-    var(--color-brand-500) 55%,
-    var(--color-brand-700) 100%
-  );
-  background-clip: text;
-  color: transparent;
+/* Palavra-chave em vermelho chapado — sem gradiente, como pintura. */
+@utility text-accent {
+  color: var(--color-brand-500);
 }
 
-/* Cartão padrão: vidro fosco leve sobre a base grafite. */
+/* Cartão de painel metálico: canto duro, borda visível, sem vidro. */
 @utility surface-card {
   background: linear-gradient(
     180deg,
-    color-mix(in oklab, var(--color-chalk) 5%, transparent) 0%,
-    color-mix(in oklab, var(--color-chalk) 2%, transparent) 100%
+    var(--color-ink-850) 0%,
+    var(--color-ink-900) 100%
   );
-  border: 1px solid color-mix(in oklab, var(--color-chalk) 9%, transparent);
-  backdrop-filter: blur(12px);
+  border: 1px solid color-mix(in oklab, var(--color-chalk) 11%, transparent);
 }
 
 /* --------------------------------------------------------------------- */
-/*  TEXTURAS DE FUNDO                                                     */
+/*  TEXTURAS DE OFICINA                                                   */
 /* --------------------------------------------------------------------- */
 
-/* Grade técnica sutil — dá profundidade sem pesar (puro CSS, 0 KB). */
-.bg-grid {
+/* Chapa xadrez (piso antiderrapante de box). Puro CSS, 0 KB. */
+.bg-plate {
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 64px 64px;
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.028) 0 2px,
+      transparent 2px 11px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.028) 0 2px,
+      transparent 2px 11px
+    );
+  background-size: 28px 28px;
 }
 
-/* Ruído fino para eliminar o "banding" dos gradientes. */
-.bg-noise::after {
+/* Piso do box: junta larga de placa cimentícia. */
+.bg-bay {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 116px 116px;
+}
+
+/* Faixa zebrada de sinalização — divide seções como fita de área técnica. */
+.stripe-hazard {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-amber-500) 0 14px,
+    var(--color-ink-950) 14px 28px
+  );
+}
+
+/* Ruído fino: tira o aspecto "liso demais" dos gradientes. */
+.bg-grain::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* Halo radial de acento usado atrás do hero e das seções-chave. */
-.glow-brand {
+/* Luz quente de lâmpada de galpão, atrás do hero. */
+.glow-shop {
   background: radial-gradient(
-    55% 55% at 50% 0%,
-    color-mix(in oklab, var(--color-brand-500) 30%, transparent) 0%,
-    transparent 70%
+    58% 50% at 50% 0%,
+    color-mix(in oklab, var(--color-amber-500) 16%, transparent) 0%,
+    color-mix(in oklab, var(--color-brand-700) 16%, transparent) 42%,
+    transparent 72%
   );
+}
+
+/* Numeral de box pintado no chão. */
+.bay-number {
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 2px color-mix(in oklab, var(--color-chalk) 16%, transparent);
 }
 
 /* --------------------------------------------------------------------- */
 /*  MOTION                                                                */
-/*  Animações de scroll são controladas por IntersectionObserver          */
-/*  (ver useReveal). Sem biblioteca: ~0 KB de JS extra.                   */
 /* --------------------------------------------------------------------- */
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(20px);
   transition:
-    opacity 0.75s var(--ease-out-expo),
-    transform 0.75s var(--ease-out-expo);
+    opacity 0.7s var(--ease-out-expo),
+    transform 0.7s var(--ease-out-expo);
   transition-delay: var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
@@ -196,58 +221,24 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes float-slow {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -14px, 0); }
+@keyframes rotate-slow {
+  to { transform: rotate(360deg); }
 }
 
 @keyframes pulse-ring {
   0% { transform: scale(0.85); opacity: 0.7; }
-  70% { transform: scale(1.5); opacity: 0; }
-  100% { transform: scale(1.5); opacity: 0; }
+  70%, 100% { transform: scale(1.5); opacity: 0; }
 }
 
-.animate-marquee {
-  animation: marquee 38s linear infinite;
-}
-.animate-float-slow {
-  animation: float-slow 9s ease-in-out infinite;
-}
+.animate-marquee { animation: marquee 38s linear infinite; }
+.animate-rotate-slow { animation: rotate-slow 44s linear infinite; }
 
-/* Respeita quem pediu menos movimento no sistema operacional. */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  [data-reveal] {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Coroa de marcações do hero (estilo tacômetro).
-   Desenhada com gradiente cônico + máscara: 1 nó no DOM em vez de 48. */
-.tick-ring {
-  background: repeating-conic-gradient(
-    from 0deg at 50% 50%,
-    rgba(255, 255, 255, 0.22) 0deg 0.35deg,
-    transparent 0.35deg 7.5deg
-  );
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent 0 45.5%,
-    #000 45.5% 49%,
-    transparent 49%
-  );
-  mask-image: radial-gradient(
-    circle at 50% 50%,
-    transparent 0 45.5%,
-    #000 45.5% 49%,
-    transparent 49%
-  );
+  [data-reveal] { opacity: 1; transform: none; }
 }

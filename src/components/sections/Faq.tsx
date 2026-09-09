@@ -26,12 +26,12 @@ export function Faq() {
         <ul className="flex flex-col gap-3">
           {faq.map((item, i) => (
             <Reveal as="li" key={item.question} delay={i * 60}>
-              <details className="surface-card group overflow-hidden rounded-2xl transition-colors duration-400 open:border-white/15 hover:border-white/15">
+              <details className="surface-card group overflow-hidden transition-colors duration-200 open:border-amber-500/60 hover:border-ink-600">
                 <summary className="flex cursor-pointer list-none items-start justify-between gap-5 p-6 [&::-webkit-details-marker]:hidden">
-                  <h3 className="font-display text-[1rem] font-bold leading-snug tracking-tight text-chalk sm:text-[1.05rem]">
+                  <h3 className="font-display text-[1.18rem] font-bold leading-snug text-chalk sm:text-[1.24rem]">
                     {item.question}
                   </h3>
-                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-white/12 text-mist transition-all duration-400 group-open:rotate-45 group-open:border-brand-500/50 group-open:bg-brand-500/10 group-open:text-brand-400">
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center border-2 border-ink-700 text-mist transition-all duration-300 group-open:rotate-45 group-open:border-amber-500 group-open:text-amber-400">
                     <PlusIcon className="h-4 w-4" />
                   </span>
                 </summary>

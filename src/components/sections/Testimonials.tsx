@@ -26,7 +26,7 @@ export function Testimonials() {
             as="li"
             key={item.name}
             delay={(i % 3) * 90}
-            className="surface-card flex h-full flex-col rounded-3xl p-7"
+            className="surface-card flex h-full flex-col p-7"
           >
             <div className="flex gap-0.5 text-brand-400" aria-label={`${item.rating} de 5 estrelas`}>
               {Array.from({ length: item.rating }).map((_, s) => (

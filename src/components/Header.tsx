@@ -27,8 +27,8 @@ export function Header() {
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           scrolled
-            ? "border-b border-white/[0.07] bg-ink-950/80 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent"
+            ? "border-b-2 border-ink-800 bg-ink-950/95 backdrop-blur"
+            : "border-b-2 border-transparent bg-transparent"
         }`}
       >
         <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-6">
@@ -42,7 +42,7 @@ export function Header() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="relative rounded-full px-3.5 py-2 text-[0.86rem] font-medium text-mist transition-colors duration-300 hover:text-chalk"
+                    className="relative px-3.5 py-2 text-[0.82rem] font-semibold uppercase tracking-[0.08em] text-mist transition-colors duration-200 hover:text-amber-400"
                   >
                     {item.label}
                   </a>
@@ -55,7 +55,7 @@ export function Header() {
             <a
               href={telUrl}
               onClick={() => trackLead("telefone", "header")}
-              className="hidden items-center gap-2 rounded-full px-3 py-2 text-[0.86rem] font-semibold text-chalk transition-colors hover:text-brand-400 md:inline-flex"
+              className="hidden items-center gap-2 px-3 py-2 font-display text-[1.08rem] font-bold text-chalk transition-colors hover:text-amber-400 md:inline-flex"
             >
               <PhoneIcon className="h-4 w-4" />
               {business.phone.display}
@@ -72,7 +72,7 @@ export function Header() {
               rel="noopener noreferrer"
               onClick={() => trackLead("whatsapp", "header")}
               aria-label="Falar no WhatsApp"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-brand-500 text-white shadow-[0_10px_30px_-12px_rgba(238,59,50,0.9)] transition-colors hover:bg-brand-400 sm:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-[3px] border-b-[3px] border-brand-700 bg-brand-500 text-white transition-colors hover:bg-brand-400 sm:hidden"
             >
               <WhatsAppIcon className="h-5 w-5" />
             </a>
@@ -82,7 +82,7 @@ export function Header() {
               onClick={() => setOpen(true)}
               aria-label="Abrir menu"
               aria-expanded={open}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 bg-white/[0.04] text-chalk transition-colors hover:bg-white/[0.09] lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center border-2 border-ink-700 bg-ink-900 text-chalk transition-colors hover:border-amber-500 lg:hidden"
             >
               <MenuIcon className="h-5 w-5" />
             </button>
@@ -112,7 +112,7 @@ export function Header() {
               type="button"
               onClick={() => setOpen(false)}
               aria-label="Fechar menu"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-chalk"
+              className="inline-flex h-11 w-11 items-center justify-center border-2 border-ink-700 text-chalk"
             >
               <CloseIcon className="h-5 w-5" />
             </button>
@@ -121,17 +121,17 @@ export function Header() {
           <nav aria-label="Navegação mobile" className="mt-8">
             <ul className="flex flex-col">
               {nav.map((item, i) => (
-                <li key={item.href} className="border-b border-white/[0.06] last:border-0">
+                <li key={item.href} className="border-b-2 border-ink-800 last:border-0">
                   <a
                     href={item.href}
                     onClick={() => setOpen(false)}
                     style={{ transitionDelay: `${open ? 60 + i * 45 : 0}ms` }}
-                    className={`flex items-center justify-between py-4 font-display text-[1.35rem] font-bold tracking-tight text-chalk transition-all duration-500 ${
+                    className={`flex items-center justify-between py-4 font-display text-[1.7rem] font-bold uppercase text-chalk transition-all duration-500 ${
                       open ? "translate-x-0 opacity-100" : "translate-x-3 opacity-0"
                     }`}
                   >
                     {item.label}
-                    <span className="text-sm font-normal text-slate-soft">
+                    <span className="font-display text-base font-bold text-amber-400">
                       0{i + 1}
                     </span>
                   </a>
@@ -145,7 +145,7 @@ export function Header() {
             <a
               href={telUrl}
               onClick={() => trackLead("telefone", "header")}
-              className="flex h-13 items-center justify-center gap-2 rounded-full border border-white/12 text-[0.97rem] font-semibold text-chalk"
+              className="flex h-13 items-center justify-center gap-2 rounded-[3px] border-2 border-ink-600 text-[0.98rem] font-bold uppercase tracking-[0.06em] text-chalk"
             >
               <PhoneIcon className="h-4 w-4" />
               {business.phone.display}

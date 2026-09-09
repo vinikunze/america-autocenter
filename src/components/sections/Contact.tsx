@@ -41,13 +41,13 @@ export function Contact() {
   }
 
   const field =
-    "h-12 w-full rounded-xl border border-white/[0.09] bg-ink-950/60 px-4 text-[0.94rem] text-chalk placeholder:text-slate-soft/70 transition-colors duration-300 focus:border-brand-500/60 focus:bg-ink-950";
+    "h-12 w-full rounded-[3px] border-2 border-ink-700 bg-ink-950 px-4 text-[0.95rem] text-chalk placeholder:text-slate-soft/70 transition-colors duration-200 focus:border-amber-500";
 
   return (
     <Section id="orcamento" className="overflow-hidden">
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-32 top-10 -z-10 h-[26rem] w-[26rem] rounded-full bg-brand-600/12 blur-[110px]"
+        className="bg-plate pointer-events-none absolute inset-0 -z-10 opacity-45"
       />
 
       <div className="grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
@@ -57,7 +57,7 @@ export function Contact() {
             title={
               <>
                 Conte o que está acontecendo.{" "}
-                <span className="text-gradient">A gente resolve.</span>
+                <span className="text-accent">A gente resolve.</span>
               </>
             }
             description="Preencha em 30 segundos. A mensagem já chega organizada no nosso WhatsApp e a resposta sai no horário comercial."
@@ -80,7 +80,7 @@ export function Contact() {
         <Reveal delay={120}>
           <form
             onSubmit={handleSubmit}
-            className="surface-card rounded-3xl p-6 sm:p-8"
+            className="surface-card p-6 sm:p-8"
             noValidate={false}
           >
             <div className="flex flex-col gap-4">
@@ -135,13 +135,13 @@ export function Contact() {
                   name="mensagem"
                   rows={3}
                   placeholder="Ex.: barulho na suspensão ao passar em lombada"
-                  className="w-full resize-none rounded-xl border border-white/[0.09] bg-ink-950/60 px-4 py-3 text-[0.94rem] text-chalk placeholder:text-slate-soft/70 transition-colors duration-300 focus:border-brand-500/60 focus:bg-ink-950"
+                  className="w-full resize-none rounded-[3px] border-2 border-ink-700 bg-ink-950 px-4 py-3 text-[0.95rem] text-chalk placeholder:text-slate-soft/70 transition-colors duration-200 focus:border-amber-500"
                 />
               </label>
 
               <button
                 type="submit"
-                className="mt-2 inline-flex h-13 items-center justify-center gap-2.5 rounded-full bg-brand-500 px-7 text-[0.97rem] font-semibold text-white shadow-[0_10px_30px_-10px_rgba(238,59,50,0.85)] transition-all duration-300 hover:bg-brand-400 active:translate-y-px"
+                className="mt-2 inline-flex h-13 items-center justify-center gap-2.5 rounded-[3px] border-b-[3px] border-brand-700 bg-brand-500 px-7 text-[0.98rem] font-bold uppercase tracking-[0.06em] text-white transition-all duration-200 hover:bg-brand-400 active:translate-y-[2px] active:border-b-[1px]"
               >
                 <WhatsAppIcon className="h-5 w-5" />
                 Enviar pelo WhatsApp

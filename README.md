@@ -21,7 +21,7 @@ estão reunidos em `src/content/site.ts` e marcados com `// CONFIRMAR`:
 | Telefone / WhatsApp | `(66) 9 9260-7556` | O cadastro público traz `66 9260-7556` (8 dígitos). Assumimos o `9` inicial do celular. **É para cá que vão 100% dos leads.** |
 | Horário de atendimento | Seg–Sex 8h–18h · Sáb 8h–12h | Presumido pelo padrão do setor. |
 | Bairro | não informado | Não consta no cadastro público. |
-| Lista de serviços | 9 serviços | O CNPJ registra apenas comércio de peças (CNAE 4530-7/03). Ajuste a lista ao que é realmente executado — anunciar serviço que não existe reprova a conta no Google Ads. |
+| Lista de serviços | 7 serviços | O CNPJ registra apenas comércio de peças (CNAE 4530-7/03). Elétrica e ar-condicionado foram removidos a pedido do cliente. Confirme o restante — anunciar serviço que não existe reprova a conta no Google Ads. |
 | Garantia de 90 dias | usada em 4 pontos do site | Promessa comercial. Só mantenha se o cliente confirmar. |
 | Domínio (`siteUrl`) | `americaautocenter.com.br` | Ajuste ao domínio real; afeta canonical, sitemap e schema. |
 
@@ -41,7 +41,7 @@ políticas de anúncio do Google e da Meta.
 | Estilo | Tailwind CSS v4 | Design system em tokens (`src/app/globals.css`), sem CSS morto. |
 | Animação | IntersectionObserver + CSS | Substitui Framer Motion/GSAP. Mesmo efeito, ~0 KB de JS extra. |
 | Ícones | SVG inline autoral | Nenhuma requisição, nenhuma dependência. |
-| Fontes | Plus Jakarta Sans + Inter via `next/font` | Self-hosted no build, sem layout shift. |
+| Fontes | Barlow Condensed + Barlow via `next/font` | Condensada de placa nos títulos, humanista no corpo. Self-hosted no build, sem layout shift. |
 
 Sem backend, sem banco, sem custo recorrente de servidor: o formulário monta a
 mensagem e abre direto o WhatsApp.
@@ -78,7 +78,10 @@ npm run typecheck
 
 Nenhum componente precisa ser tocado para atualizar texto.
 
-**Cores e tipografia:** bloco `@theme` em `src/app/globals.css`.
+**Cores, tipografia e texturas:** bloco `@theme` e utilitários em
+`src/app/globals.css`. A linguagem visual é de oficina — cinzas quentes de aço,
+chapa xadrez, faixa zebrada de sinalização, tipografia condensada de placa,
+vermelho para ação e âmbar para sinalização.
 **Logo:** `src/components/Logo.tsx` (monograma provisório em SVG — substituir
 pelo logotipo oficial) e `src/app/icon.svg` (favicon).
 

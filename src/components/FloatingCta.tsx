@@ -20,7 +20,7 @@ export function FloatingCta() {
       rel="noopener noreferrer"
       onClick={() => trackLead("whatsapp", "botao-flutuante")}
       aria-label="Falar no WhatsApp"
-      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_14px_40px_-10px_rgba(37,211,102,0.75)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 sm:h-15 sm:w-15 ${
+      className={`fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full border-2 border-ink-950 bg-[#25D366] text-white shadow-[0_14px_40px_-10px_rgba(37,211,102,0.75)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-105 sm:h-15 sm:w-15 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       }`}
     >

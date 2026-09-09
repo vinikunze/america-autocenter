@@ -1,21 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import { business, siteUrl } from "@/content/site";
 import { Analytics } from "@/components/Analytics";
 import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
-const inter = Inter({
+/** Corpo: humanista levemente técnica, legível em tela pequena. */
+const body = Barlow({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+/** Títulos: condensada pesada — leitura de placa de oficina. */
+const condensed = Barlow_Condensed({
   subsets: ["latin"],
   display: "swap",
-  weight: ["700", "800"],
-  variable: "--font-jakarta",
+  weight: ["600", "700", "800"],
+  variable: "--font-condensed",
 });
 
 const title = `${business.name} — Auto center em ${business.city}/${business.state}`;
@@ -67,7 +70,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#08090b",
+  themeColor: "#121010",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -77,7 +80,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="pt-BR" className={`${body.variable} ${condensed.variable}`}>
       <head>
         <StructuredData />
       </head>
@@ -85,7 +88,7 @@ export default function RootLayout({
         {/* Atalho de teclado para leitores de tela e navegação por Tab. */}
         <a
           href="#servicos"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-brand-500 focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-brand-500 focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
         >
           Pular para o conteúdo
         </a>

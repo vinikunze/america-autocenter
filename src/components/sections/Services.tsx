@@ -1,5 +1,5 @@
 import { services } from "@/content/site";
-import { ServiceIcon } from "@/components/Icons";
+import { ServiceIcon, ArrowIcon } from "@/components/Icons";
 import { Section, SectionHeader } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { WhatsAppButton } from "@/components/CTA";
@@ -7,45 +7,46 @@ import { WhatsAppButton } from "@/components/CTA";
 export function Services() {
   return (
     <Section id="servicos">
-      <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-        <SectionHeader
-          eyebrow="O que fazemos"
-          title={
-            <>
-              Um endereço só para{" "}
-              <span className="text-gradient">tudo que o seu carro precisa</span>
-            </>
-          }
-          description="Da peça ao serviço executado. Você não precisa rodar a cidade atrás de três fornecedores diferentes para resolver um problema só."
-        />
-        <Reveal delay={120}>
-          <WhatsAppButton source="servicos" label="Consultar meu caso" variant="outline" />
-        </Reveal>
-      </div>
+      <SectionHeader
+        eyebrow="O que fazemos"
+        title={
+          <>
+            Um endereço só para <span className="text-accent">tudo que o seu carro precisa</span>
+          </>
+        }
+        description="Da peça ao serviço executado. Você não precisa rodar a cidade atrás de três fornecedores diferentes para resolver um problema só."
+      />
 
-      <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {/*
+        Sete serviços mais o bloco de chamada, que ocupa duas colunas:
+        a grade de três fecha exata, sem buraco na última linha.
+      */}
+      <ul className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((service, i) => (
-          <Reveal as="li" key={service.id} delay={(i % 3) * 90}>
-            <article className="surface-card group relative h-full overflow-hidden rounded-3xl p-7 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1 hover:border-brand-500/35">
-              {/* Brilho que segue o hover — detalhe premium discreto */}
-              <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-brand-500/0 blur-3xl transition-all duration-700 group-hover:bg-brand-500/20" />
+          <Reveal as="li" key={service.id} delay={(i % 3) * 80}>
+            <article className="surface-card group relative flex h-full flex-col p-7 transition-colors duration-300 hover:border-amber-500/60">
+              {/* Barra de acento no topo, como faixa pintada na bancada. */}
+              <span
+                className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-brand-500 transition-transform duration-300 group-hover:scale-x-100"
+                aria-hidden
+              />
 
-              <span className="relative flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/[0.04] text-brand-400 transition-colors duration-500 group-hover:border-brand-500/40 group-hover:bg-brand-500/10">
-                <ServiceIcon name={service.icon} className="h-[1.4rem] w-[1.4rem]" />
+              <span className="flex h-14 w-14 items-center justify-center border-2 border-ink-700 bg-ink-950 text-brand-500 transition-colors duration-300 group-hover:border-amber-500 group-hover:text-amber-400">
+                <ServiceIcon name={service.icon} className="h-7 w-7" />
               </span>
 
-              <h3 className="relative mt-6 font-display text-[1.16rem] font-bold tracking-tight text-chalk">
+              <h3 className="mt-6 font-display text-[1.45rem] font-bold text-chalk">
                 {service.title}
               </h3>
-              <p className="relative mt-2.5 text-[0.92rem] leading-relaxed text-mist">
+              <p className="mt-2.5 flex-1 text-[0.94rem] leading-relaxed text-mist">
                 {service.description}
               </p>
 
-              <ul className="relative mt-5 flex flex-wrap gap-1.5">
+              <ul className="mt-5 flex flex-wrap gap-1.5">
                 {service.points.map((point) => (
                   <li
                     key={point}
-                    className="rounded-full border border-white/[0.08] bg-white/[0.03] px-2.5 py-1 text-[0.72rem] font-medium text-slate-soft"
+                    className="border border-ink-700 bg-ink-950 px-2.5 py-1 text-[0.74rem] font-medium uppercase tracking-wide text-slate-soft"
                   >
                     {point}
                   </li>
@@ -54,6 +55,27 @@ export function Services() {
             </article>
           </Reveal>
         ))}
+
+        <Reveal as="li" delay={160} className="sm:col-span-2">
+          <div className="relative flex h-full flex-col justify-center overflow-hidden border-2 border-ink-700 bg-ink-900 p-8">
+            <div className="bg-plate absolute inset-0 opacity-60" aria-hidden />
+            <div className="stripe-hazard absolute inset-y-0 left-0 w-2.5" aria-hidden />
+
+            <div className="relative pl-4">
+              <h3 className="font-display text-[1.6rem] font-bold text-chalk">
+                Não achou o que precisa?
+              </h3>
+              <p className="mt-2 max-w-md text-[0.96rem] leading-relaxed text-mist">
+                Descreva o problema no WhatsApp. Se for serviço que a gente faz,
+                já sai o orçamento; se não for, indicamos quem faz direito.
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <WhatsAppButton source="servicos" label="Falar com a equipe" />
+                <ArrowIcon className="hidden h-5 w-5 text-slate-soft sm:block" />
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </ul>
     </Section>
   );

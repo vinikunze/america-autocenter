@@ -4,8 +4,8 @@ import { Reveal } from "@/components/Reveal";
 /** Rótulo pequeno que abre cada seção — cria ritmo e hierarquia. */
 export function Eyebrow({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand-400">
-      <span className="h-px w-6 bg-brand-500/70" aria-hidden />
+    <span className="inline-flex items-center gap-2.5 text-[0.76rem] font-bold uppercase tracking-[0.22em] text-amber-400">
+      <span className="h-3.5 w-1 bg-brand-500" aria-hidden />
       {children}
     </span>
   );
@@ -30,11 +30,11 @@ export function SectionHeader({
   return (
     <Reveal className={`flex max-w-2xl flex-col gap-4 ${alignment} ${className}`}>
       {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <h2 className="text-[clamp(1.9rem,4.4vw,3rem)] font-extrabold leading-[1.06] text-chalk">
+      <h2 className="text-[clamp(2.2rem,5.2vw,3.6rem)] font-extrabold text-chalk">
         {title}
       </h2>
       {description ? (
-        <p className="text-[1.02rem] leading-relaxed text-mist">{description}</p>
+        <p className="text-[1.05rem] leading-relaxed text-mist">{description}</p>
       ) : null}
     </Reveal>
   );
