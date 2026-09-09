@@ -1,6 +1,7 @@
 import { differentials, photos } from "@/content/site";
 import { ServiceIcon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
+import { asset } from "@/lib/asset";
 
 /**
  * Bloco escuro sobre foto de bastidor. Enquanto não houver imagem em
@@ -14,7 +15,7 @@ export function Differentials() {
       {temFundo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={photos.bastidor.src}
+          src={asset(photos.bastidor.src)}
           alt=""
           aria-hidden
           loading="lazy"

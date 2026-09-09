@@ -1,5 +1,6 @@
 import type { Photo as PhotoData } from "@/content/site";
 import { WrenchIcon } from "@/components/Icons";
+import { asset } from "@/lib/asset";
 
 /**
  * Espaço de foto do layout.
@@ -39,7 +40,7 @@ export function Photo({
       {temFoto ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src={photo.src}
+          src={asset(photo.src)}
           alt={photo.alt}
           sizes={sizes}
           loading={priority ? "eager" : "lazy"}

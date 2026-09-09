@@ -7,6 +7,8 @@
  * vermelho da marca fica intacto nas duas. `logo.png` mantém as cores
  * originais, para uso sobre fundo claro.
  */
+import { asset } from "@/lib/asset";
+
 export function Logo({
   className = "",
   variant = "dark",
@@ -18,7 +20,7 @@ export function Logo({
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={variant === "dark" ? "/marca/logo-escuro.png" : "/marca/logo.png"}
+      src={asset(variant === "dark" ? "/marca/logo-escuro.png" : "/marca/logo.png")}
       alt="América Auto Center"
       width={520}
       height={261}

@@ -242,8 +242,9 @@ src/
 ├── content/site.ts             ← conteúdo do site (edite aqui)
 └── lib/                        analytics, hooks, links
 
-public/marca/                   logotipo oficial (claro, escuro e original)
+public/marca/                   logotipo oficial (variantes claro e escuro)
 public/fotos/                   fotos da oficina
+assets-originais/               arquivos-fonte do cliente, fora do deploy
 
 scripts/og.mjs                  publica o card de OpenGraph como og.png
 .github/workflows/deploy.yml    build + publicação no GitHub Pages
