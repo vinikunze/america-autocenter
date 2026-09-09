@@ -1,49 +1,65 @@
-import { differentials } from "@/content/site";
+import { differentials, photos } from "@/content/site";
 import { ServiceIcon } from "@/components/Icons";
-import { Section, SectionHeader } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 
+/**
+ * Bloco escuro sobre foto de bastidor. Enquanto não houver imagem em
+ * `photos.bastidor`, o gradiente sozinho já sustenta o contraste.
+ */
 export function Differentials() {
+  const temFundo = photos.bastidor.src.length > 0;
+
   return (
-    <Section id="diferenciais" className="overflow-hidden">
-      {/* Halo de acento à esquerda, criando profundidade na seção */}
-      <div className="bg-plate absolute inset-0 -z-10 opacity-45" aria-hidden />
+    <section id="diferenciais" className="relative isolate overflow-hidden py-20 sm:py-28">
+      {temFundo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={photos.bastidor.src}
+          alt=""
+          aria-hidden
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 -z-20 h-full w-full object-cover"
+        />
+      ) : null}
+      <div
+        className={`absolute inset-0 -z-10 ${
+          temFundo ? "bg-ink-950/88" : "bg-ink-900"
+        }`}
+        aria-hidden
+      />
+      {!temFundo ? <div className="bg-mesh absolute inset-0 -z-10 opacity-60" aria-hidden /> : null}
 
-      <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <div className="lg:sticky lg:top-28 lg:self-start">
-          <SectionHeader
-            eyebrow="Por que a América"
-            title={
-              <>
-                O medo não é do conserto.{" "}
-                <span className="text-accent">É da conta no fim.</span>
-              </>
-            }
-            description="Todo mundo já saiu de uma oficina com a sensação de ter pago por algo que não entendeu. Nosso processo inteiro foi montado para que isso não aconteça aqui."
-          />
-        </div>
+      <div className="container-page relative">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <h2 className="text-[clamp(2rem,4.8vw,3rem)] text-chalk">
+            Por que escolher a <span className="text-accent">América Auto Center</span>
+          </h2>
+          <p className="mt-4 text-[1.02rem] leading-relaxed text-mist">
+            Quatro compromissos que valem para todo carro que entra no nosso box
+            — do serviço de trinta minutos ao reparo mais caro.
+          </p>
+        </Reveal>
 
-        <ul className="grid gap-5 sm:grid-cols-2">
+        <ul className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {differentials.map((item, i) => (
             <Reveal
               as="li"
               key={item.title}
-              delay={i * 100}
-              className="surface-card group p-7 transition-colors duration-300 hover:border-amber-500/60"
+              delay={i * 90}
+              className="surface-card flex h-full flex-col items-center rounded-2xl bg-ink-850/85 p-7 text-center backdrop-blur-sm transition-colors duration-300 hover:border-brand-500/50"
             >
-              <span className="flex h-12 w-12 items-center justify-center border-2 border-ink-700 bg-ink-950 text-brand-500 transition-colors duration-300 group-hover:text-amber-400">
+              <span className="flex h-14 w-14 items-center justify-center rounded-full bg-brand-500/12 text-brand-500">
                 <ServiceIcon name={item.icon} className="h-6 w-6" />
               </span>
-              <h3 className="mt-5 font-display text-[1.32rem] font-bold text-chalk">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-mist">
+              <h3 className="mt-5 text-[1.12rem] text-chalk">{item.title}</h3>
+              <p className="mt-2.5 text-[0.92rem] leading-relaxed text-mist">
                 {item.description}
               </p>
             </Reveal>
           ))}
         </ul>
       </div>
-    </Section>
+    </section>
   );
 }

@@ -11,23 +11,19 @@ type Size = "md" | "lg";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-brand-500 text-white border-b-[3px] border-brand-700 hover:bg-brand-400 active:translate-y-[2px] active:border-b-[1px]",
+    "bg-brand-500 text-white shadow-[0_10px_28px_-12px_rgba(224,31,45,0.8)] hover:bg-brand-400 active:translate-y-px",
   outline:
-    "border-2 border-ink-600 bg-ink-850 text-chalk hover:border-amber-500 hover:text-amber-400",
+    "border border-ink-600 bg-ink-900/60 text-chalk hover:border-brand-500 hover:text-brand-400",
   ghost: "text-mist hover:text-chalk",
 };
 
 const sizes: Record<Size, string> = {
-  md: "h-11 px-5 text-[0.88rem]",
-  lg: "h-13 px-7 text-[0.98rem]",
+  md: "h-11 px-5 text-[0.92rem]",
+  lg: "h-13 px-7 text-[1rem]",
 };
 
-/**
- * Botão com aresta viva e borda inferior mais grossa: sugere chapa
- * pintada e dá o feedback físico de "afundar" no clique.
- */
 const shell =
-  "group inline-flex items-center justify-center gap-2.5 rounded-[3px] font-bold uppercase tracking-[0.06em] transition-all duration-200 focus-visible:outline-2";
+  "group inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-xl font-bold tracking-tight transition-all duration-200 focus-visible:outline-2";
 
 /** Botão-âncora genérico com rastreamento de conversão embutido. */
 export function ActionLink({

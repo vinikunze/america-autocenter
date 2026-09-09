@@ -26,9 +26,9 @@ export function Testimonials() {
             as="li"
             key={item.name}
             delay={(i % 3) * 90}
-            className="surface-card flex h-full flex-col p-7"
+            className="surface-card flex h-full flex-col rounded-2xl p-7"
           >
-            <div className="flex gap-0.5 text-brand-400" aria-label={`${item.rating} de 5 estrelas`}>
+            <div className="flex gap-0.5 text-brand-500" aria-label={`${item.rating} de 5 estrelas`}>
               {Array.from({ length: item.rating }).map((_, s) => (
                 <StarIcon key={s} className="h-4 w-4" />
               ))}
@@ -37,7 +37,7 @@ export function Testimonials() {
               “{item.text}”
             </blockquote>
             <footer className="mt-6 border-t border-white/[0.07] pt-4">
-              <p className="font-display text-[0.95rem] font-bold text-chalk">{item.name}</p>
+              <p className="text-[0.95rem] font-bold text-chalk">{item.name}</p>
               <p className="text-[0.8rem] text-slate-soft">{item.role}</p>
             </footer>
           </Reveal>

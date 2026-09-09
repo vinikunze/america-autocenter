@@ -2,40 +2,42 @@
 
 /* =====================================================================
    DESIGN SYSTEM — América Auto Center
-   Linguagem de oficina mecânica: aço quente no lugar do preto azulado,
-   tipografia condensada de placa de garagem, listra de sinalização e
-   textura de chapa xadrez. Vermelho para ação, âmbar para sinalização.
+   Base preta e vermelho da marca, com a estrutura de landing de alta
+   conversão: cantos generosos, cartões com foto, seções escuras
+   alternando com claras e um único acento para toda ação.
    ===================================================================== */
 
 @theme {
-  /* --- Superfícies: cinzas quentes, com pigmento de graxa --- */
-  --color-ink-950: #121010;
-  --color-ink-900: #1a1716;
-  --color-ink-850: #211d1b;
-  --color-ink-800: #2a2523;
-  --color-ink-700: #3a3330;
-  --color-ink-600: #4d4441;
+  /* --- Escuro: pretos neutros, sem cast azulado --- */
+  --color-ink-950: #0b0b0d;
+  --color-ink-900: #121215;
+  --color-ink-850: #17171c;
+  --color-ink-800: #1e1e24;
+  --color-ink-700: #2b2b33;
+  --color-ink-600: #3d3d47;
 
-  /* --- Texto: osso e cinza-poeira, nunca branco puro --- */
-  --color-chalk: #f4efe9;
-  --color-mist: #b0a69e;
-  --color-slate-soft: #837872;
+  /* --- Claro: usado nas seções de fundo branco --- */
+  --color-paper: #f6f6f8;
+  --color-paper-card: #ffffff;
+  --color-paper-line: #e4e4ea;
+  --color-paper-ink: #14141a;
+  --color-paper-muted: #5f5f6b;
 
-  /* --- Vermelho de ação --- */
-  --color-brand-400: #f2564a;
-  --color-brand-500: #d9342a;
-  --color-brand-600: #b8241c;
-  --color-brand-700: #8c1913;
+  /* --- Texto sobre escuro --- */
+  --color-chalk: #f7f7f9;
+  --color-mist: #a9a9b6;
+  --color-slate-soft: #7a7a88;
 
-  /* --- Âmbar de sinalização (listras, números de box, destaques) --- */
-  --color-amber-400: #ffc043;
-  --color-amber-500: #f5a524;
+  /* --- Vermelho da marca: única cor de ação do site --- */
+  --color-brand-400: #ff4d4d;
+  --color-brand-500: #e01f2d;
+  --color-brand-600: #c4121f;
+  --color-brand-700: #8e0b15;
 
-  --color-signal: #4caf72;
+  --color-signal: #22c55e;
 
-  /* --- Tipografia: condensada para placa, humanista para leitura --- */
-  --font-display: var(--font-condensed), "Arial Narrow", ui-sans-serif, sans-serif;
-  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-family), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body-family), ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --spacing-gutter: 1.25rem;
@@ -48,11 +50,7 @@
 @layer base {
   :root {
     color-scheme: dark;
-    --header-h: 4.5rem;
-  }
-
-  * {
-    border-color: color-mix(in oklab, var(--color-chalk) 10%, transparent);
+    --header-h: 4.75rem;
   }
 
   html {
@@ -69,18 +67,13 @@
     overflow-x: hidden;
   }
 
-  /* Títulos em condensada caixa-alta: leitura de placa de oficina. */
-  h1, h2, h3 {
+  /* Caixa mista, peso alto, entrelinha curta — nada de caixa-alta. */
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
-    line-height: 0.95;
+    font-weight: 800;
+    letter-spacing: -0.028em;
+    line-height: 1.08;
     text-wrap: balance;
-  }
-
-  h4 {
-    font-family: var(--font-display);
-    letter-spacing: 0.01em;
   }
 
   p { text-wrap: pretty; }
@@ -91,8 +84,9 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-amber-400);
+    outline: 2px solid var(--color-brand-400);
     outline-offset: 3px;
+    border-radius: 6px;
   }
 
   @supports selector(::-webkit-scrollbar) {
@@ -100,9 +94,9 @@
     ::-webkit-scrollbar-track { background: var(--color-ink-950); }
     ::-webkit-scrollbar-thumb {
       background: var(--color-ink-700);
+      border-radius: 99px;
       border: 2px solid var(--color-ink-950);
     }
-    ::-webkit-scrollbar-thumb:hover { background: var(--color-ink-600); }
   }
 }
 
@@ -117,84 +111,83 @@
   padding-inline: var(--spacing-gutter);
 }
 
-/* Palavra-chave em vermelho chapado — sem gradiente, como pintura. */
+/** Frase-chave do título, na cor de ação. */
 @utility text-accent {
   color: var(--color-brand-500);
 }
 
-/* Cartão de painel metálico: canto duro, borda visível, sem vidro. */
+/** Cartão padrão das seções escuras. */
 @utility surface-card {
-  background: linear-gradient(
-    180deg,
-    var(--color-ink-850) 0%,
-    var(--color-ink-900) 100%
-  );
-  border: 1px solid color-mix(in oklab, var(--color-chalk) 11%, transparent);
+  background: var(--color-ink-850);
+  border: 1px solid var(--color-ink-700);
+}
+
+/** Cartão das seções claras. */
+@utility surface-paper {
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-paper-line);
+  box-shadow: 0 1px 2px rgba(16, 16, 24, 0.05), 0 12px 28px -18px rgba(16, 16, 24, 0.28);
+}
+
+/** Bloco de seção clara: inverte a escala de texto inteira. */
+@utility section-light {
+  background: var(--color-paper);
+  color: var(--color-paper-ink);
 }
 
 /* --------------------------------------------------------------------- */
-/*  TEXTURAS DE OFICINA                                                   */
+/*  TEXTURAS                                                              */
 /* --------------------------------------------------------------------- */
 
-/* Chapa xadrez (piso antiderrapante de box). Puro CSS, 0 KB. */
-.bg-plate {
-  background-image:
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.028) 0 2px,
-      transparent 2px 11px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      rgba(255, 255, 255, 0.028) 0 2px,
-      transparent 2px 11px
-    );
-  background-size: 28px 28px;
-}
-
-/* Piso do box: junta larga de placa cimentícia. */
-.bg-bay {
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
-  background-size: 116px 116px;
-}
-
-/* Faixa zebrada de sinalização — divide seções como fita de área técnica. */
+/* Faixa zebrada de área técnica — divisor entre blocos. */
 .stripe-hazard {
   background-image: repeating-linear-gradient(
     -45deg,
-    var(--color-amber-500) 0 14px,
-    var(--color-ink-950) 14px 28px
+    var(--color-brand-600) 0 16px,
+    var(--color-ink-950) 16px 32px
   );
 }
 
-/* Ruído fino: tira o aspecto "liso demais" dos gradientes. */
-.bg-grain::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.05;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* Luz quente de lâmpada de galpão, atrás do hero. */
+/* Brilho quente atrás do hero. */
 .glow-shop {
   background: radial-gradient(
-    58% 50% at 50% 0%,
-    color-mix(in oklab, var(--color-amber-500) 16%, transparent) 0%,
-    color-mix(in oklab, var(--color-brand-700) 16%, transparent) 42%,
-    transparent 72%
+    62% 52% at 50% 0%,
+    color-mix(in oklab, var(--color-brand-500) 22%, transparent) 0%,
+    transparent 70%
   );
 }
 
-/* Numeral de box pintado no chão. */
-.bay-number {
-  font-family: var(--font-display);
-  font-weight: 800;
-  color: transparent;
-  -webkit-text-stroke: 2px color-mix(in oklab, var(--color-chalk) 16%, transparent);
+/* Malha técnica bem discreta, só para dar profundidade ao fundo. */
+.bg-mesh {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+/* Preenchimento dos espaços de foto ainda não preenchidos.
+   Duas variantes, para o bloco acompanhar o tom da seção em volta —
+   um retângulo escuro no meio de uma seção clara pesa demais. */
+.photo-fallback-light {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(224, 31, 45, 0.07), transparent 62%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(20, 20, 26, 0.035) 0 3px,
+      transparent 3px 14px
+    ),
+    linear-gradient(160deg, #eeeef2 0%, #e0e0e7 100%);
+}
+
+.photo-fallback {
+  background:
+    radial-gradient(120% 90% at 20% 0%, rgba(224, 31, 45, 0.16), transparent 60%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.022) 0 3px,
+      transparent 3px 14px
+    ),
+    linear-gradient(160deg, var(--color-ink-800) 0%, var(--color-ink-950) 100%);
 }
 
 /* --------------------------------------------------------------------- */
@@ -221,17 +214,12 @@
   to { transform: translateX(-50%); }
 }
 
-@keyframes rotate-slow {
-  to { transform: rotate(360deg); }
-}
-
 @keyframes pulse-ring {
   0% { transform: scale(0.85); opacity: 0.7; }
   70%, 100% { transform: scale(1.5); opacity: 0; }
 }
 
 .animate-marquee { animation: marquee 38s linear infinite; }
-.animate-rotate-slow { animation: rotate-slow 44s linear infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

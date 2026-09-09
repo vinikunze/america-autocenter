@@ -20,8 +20,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative border-t-2 border-ink-800 bg-ink-950">
-      <div className="stripe-hazard h-1.5 opacity-70" aria-hidden />
+    <footer className="relative bg-ink-950">
+      <div className="stripe-hazard h-2" aria-hidden />
 
       <div className="container-page py-16">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1.2fr]">
@@ -36,7 +36,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Instagram ${business.instagram.handle}`}
-              className="mt-6 inline-flex h-11 w-11 items-center justify-center border-2 border-ink-700 text-mist transition-colors hover:border-amber-500 hover:text-amber-400"
+              className="mt-6 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink-700 text-mist transition-colors hover:border-brand-500 hover:text-brand-400"
             >
               <InstagramIcon className="h-[1.15rem] w-[1.15rem]" />
             </a>
@@ -44,7 +44,7 @@ export function Footer() {
 
           {navGroups.map((group) => (
             <nav key={group.title} aria-label={group.title}>
-              <h2 className="font-display text-[1.05rem] font-bold uppercase tracking-[0.14em] text-amber-400">
+              <h2 className="text-[0.78rem] font-bold uppercase tracking-[0.18em] text-chalk">
                 {group.title}
               </h2>
               <ul className="mt-5 flex flex-col gap-2.5">
@@ -63,7 +63,7 @@ export function Footer() {
           ))}
 
           <div>
-            <h2 className="font-display text-[1.05rem] font-bold uppercase tracking-[0.14em] text-amber-400">
+            <h2 className="text-[0.78rem] font-bold uppercase tracking-[0.18em] text-chalk">
               Contato
             </h2>
             <ul className="mt-5 flex flex-col gap-3.5 text-[0.9rem] text-slate-soft">
@@ -87,7 +87,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-2 border-t-2 border-ink-800 pt-7 text-[0.78rem] text-slate-soft sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-2 border-t border-ink-800 pt-7 text-[0.78rem] text-slate-soft sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {business.name}. Todos os direitos reservados.
           </p>

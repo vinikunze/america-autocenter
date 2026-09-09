@@ -1,24 +1,23 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { business, siteUrl } from "@/content/site";
 import { Analytics } from "@/components/Analytics";
 import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
-/** Corpo: humanista levemente técnica, legível em tela pequena. */
-const body = Barlow({
+/** Corpo: grotesca neutra, ótima legibilidade em tela pequena. */
+const body = Inter({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
+  variable: "--font-body-family",
 });
 
-/** Títulos: condensada pesada — leitura de placa de oficina. */
-const condensed = Barlow_Condensed({
+/** Títulos: grotesca de peso alto, em caixa mista e tracking fechado. */
+const display = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
-  weight: ["600", "700", "800"],
-  variable: "--font-condensed",
+  weight: ["700", "800"],
+  variable: "--font-display-family",
 });
 
 const title = `${business.name} — Auto center em ${business.city}/${business.state}`;
@@ -70,7 +69,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#121010",
+  themeColor: "#0b0b0d",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -80,7 +79,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${body.variable} ${condensed.variable}`}>
+    <html lang="pt-BR" className={`${body.variable} ${display.variable}`}>
       <head>
         <StructuredData />
       </head>
@@ -88,7 +87,7 @@ export default function RootLayout({
         {/* Atalho de teclado para leitores de tela e navegação por Tab. */}
         <a
           href="#servicos"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded focus:bg-brand-500 focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-500 focus:px-5 focus:py-3 focus:font-semibold focus:text-white"
         >
           Pular para o conteúdo
         </a>

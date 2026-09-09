@@ -91,6 +91,103 @@ export const highlights = [
 ] as const;
 
 /* --------------------------------------------------------------------- */
+/*  PROVA SOCIAL DA PRIMEIRA DOBRA                                        */
+/*  ⚠️ Só entram números que o cliente possa comprovar. Deixe `value`     */
+/*  vazio e o item some da barra — melhor um item a menos do que um       */
+/*  número inventado, que quebra a confiança e viola as políticas de      */
+/*  anúncio do Google e da Meta.                                          */
+/* --------------------------------------------------------------------- */
+
+export const socialProof = [
+  {
+    /** Preencha quando houver avaliações reais no Perfil da Empresa no Google. */
+    value: "", // ex.: "4,9"
+    label: "no Google",
+    kind: "rating" as const,
+  },
+  {
+    value: "", // ex.: "+1.200"
+    label: "clientes atendidos",
+    kind: "count" as const,
+  },
+  {
+    value: "90 dias",
+    label: "de garantia por escrito",
+    kind: "badge" as const,
+  },
+];
+
+/* --------------------------------------------------------------------- */
+/*  FOTOS                                                                 */
+/*                                                                        */
+/*  Cada slot abaixo é um espaço já dimensionado no layout. Enquanto      */
+/*  `src` estiver vazio, entra um bloco gráfico no lugar — o site não     */
+/*  quebra. Para publicar a foto de verdade:                              */
+/*                                                                        */
+/*    1. salve o arquivo em `public/fotos/` (JPG ou WebP, ~200 KB);       */
+/*    2. preencha `src` com o caminho, ex.: "/fotos/fachada.jpg";         */
+/*    3. escreva o `alt` descrevendo a cena (acessibilidade e SEO).       */
+/*                                                                        */
+/*  Respeite a proporção indicada em cada slot: fora dela a imagem é      */
+/*  cortada no centro.                                                    */
+/* --------------------------------------------------------------------- */
+
+export type Photo = {
+  src: string;
+  alt: string;
+  /** Rótulo sobreposto no canto inferior. Vazio = sem rótulo. */
+  caption?: string;
+  legend?: string;
+};
+
+export const photos = {
+  /** 4:3 — fachada ou box principal. Aparece no bloco de destaque. */
+  fachada: {
+    src: "",
+    alt: "Fachada da América Auto Center em Sinop",
+    caption: "Nossa estrutura",
+    legend: "Rua das Primaveras, 7354",
+  },
+  /** 4:3 — atendimento no box, mecânico trabalhando. */
+  atendimento: {
+    src: "",
+    alt: "Mecânico atendendo um veículo no box da oficina",
+    caption: "Mão de obra",
+    legend: "Serviço acompanhado de perto",
+  },
+  /** 4:3 — prateleira de peças / estoque. */
+  pecas: {
+    src: "",
+    alt: "Prateleira com peças novas para veículos",
+    caption: "Peças novas",
+    legend: "Marcas reconhecidas",
+  },
+  /** 4:3 — pneus ou alinhamento. */
+  pneus: {
+    src: "",
+    alt: "Pneu sendo montado na roda",
+    caption: "Pneus",
+    legend: "Montagem e balanceamento",
+  },
+  /** 16:9 — fundo escurecido da seção "Por que a América". */
+  bastidor: {
+    src: "",
+    alt: "",
+  },
+} satisfies Record<string, Photo>;
+
+/** Foto de topo de cada card de serviço. 16:10. Vazio = bloco gráfico. */
+export const servicePhotos: Record<string, Photo> = {
+  pecas: { src: "", alt: "Peças automotivas novas em estoque" },
+  revisao: { src: "", alt: "Checklist de revisão sendo preenchido" },
+  oleo: { src: "", alt: "Troca de óleo em veículo suspenso" },
+  freios: { src: "", alt: "Disco e pastilha de freio sendo trocados" },
+  suspensao: { src: "", alt: "Amortecedor sendo substituído" },
+  alinhamento: { src: "", alt: "Alinhamento 3D em execução" },
+  pneus: { src: "", alt: "Pneu novo sendo montado" },
+};
+
+/* --------------------------------------------------------------------- */
 /*  SERVIÇOS                                                              */
 /*  ⚠️ CONFIRMAR a lista com o cliente. A atividade registrada no CNPJ é  */
 /*  comércio de peças e acessórios (CNAE 4530-7/03); os serviços abaixo   */

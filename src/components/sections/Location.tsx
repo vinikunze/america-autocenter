@@ -7,9 +7,7 @@ import { ActionLink, CallButton } from "@/components/CTA";
 
 export function Location() {
   return (
-    <Section id="local" className="relative overflow-hidden border-t-2 border-ink-800 bg-ink-900">
-      <div className="bg-plate absolute inset-0 opacity-50" aria-hidden />
-
+    <Section id="local" className="relative overflow-hidden border-t border-ink-800 bg-ink-900">
       <div className="relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
         <div>
           <SectionHeader
@@ -24,21 +22,21 @@ export function Location() {
 
           <div className="mt-10 flex flex-col gap-6">
             <Reveal delay={80} className="flex gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-ink-700 bg-ink-950 text-brand-500">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/12 text-brand-500">
                 <PinIcon className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-display text-[1.15rem] font-bold uppercase text-chalk">Endereço</p>
+                <p className="text-[1rem] font-bold text-chalk">Endereço</p>
                 <p className="mt-1 text-[0.92rem] leading-relaxed text-mist">{fullAddress}</p>
               </div>
             </Reveal>
 
             <Reveal delay={140} className="flex gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-ink-700 bg-ink-950 text-brand-500">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/12 text-brand-500">
                 <Icon.clock className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-display text-[1.15rem] font-bold uppercase text-chalk">
+                <p className="text-[1rem] font-bold text-chalk">
                   Horário de atendimento
                 </p>
                 <ul className="mt-1 flex flex-col gap-0.5">
@@ -52,11 +50,11 @@ export function Location() {
             </Reveal>
 
             <Reveal delay={200} className="flex gap-4">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center border-2 border-ink-700 bg-ink-950 text-brand-500">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-500/12 text-brand-500">
                 <MailIcon className="h-5 w-5" />
               </span>
               <div>
-                <p className="font-display text-[1.15rem] font-bold uppercase text-chalk">Outros canais</p>
+                <p className="text-[1rem] font-bold text-chalk">Outros canais</p>
                 <div className="mt-1 flex flex-col gap-0.5">
                   <a
                     href={mailUrl}
@@ -94,13 +92,13 @@ export function Location() {
         </div>
 
         <Reveal delay={160} className="min-h-[22rem] lg:min-h-0">
-          <div className="surface-card relative h-full overflow-hidden p-2">
+          <div className="surface-card relative h-full overflow-hidden rounded-2xl p-2">
             <iframe
               src={mapEmbedUrl}
               title={`Mapa — ${business.name}, ${fullAddress}`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              className="h-full min-h-[21rem] w-full border-0 grayscale-[0.55] contrast-[1.1] transition-[filter] duration-700 hover:grayscale-0"
+              className="h-full min-h-[21rem] w-full rounded-xl border-0 grayscale-[0.55] contrast-[1.1] transition-[filter] duration-700 hover:grayscale-0"
             />
           </div>
         </Reveal>

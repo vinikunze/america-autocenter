@@ -41,7 +41,7 @@ políticas de anúncio do Google e da Meta.
 | Estilo | Tailwind CSS v4 | Design system em tokens (`src/app/globals.css`), sem CSS morto. |
 | Animação | IntersectionObserver + CSS | Substitui Framer Motion/GSAP. Mesmo efeito, ~0 KB de JS extra. |
 | Ícones | SVG inline autoral | Nenhuma requisição, nenhuma dependência. |
-| Fontes | Barlow Condensed + Barlow via `next/font` | Condensada de placa nos títulos, humanista no corpo. Self-hosted no build, sem layout shift. |
+| Fontes | Plus Jakarta Sans + Inter via `next/font` | Grotesca pesada em caixa mista nos títulos. Self-hosted no build, sem layout shift. |
 
 Sem backend, sem banco, sem custo recorrente de servidor: o formulário monta a
 mensagem e abre direto o WhatsApp.
@@ -69,21 +69,47 @@ npm run typecheck
 | O que mudar | Onde |
 |---|---|
 | Telefone, endereço, e-mail, Instagram, horários | `business` |
-| Os 4 destaques abaixo da dobra | `highlights` |
 | Serviços (título, descrição, bullets, ícone) | `services` |
 | Blocos de "Por que a América" | `differentials` |
 | Os 3 passos de "Como funciona" | `steps` |
 | Depoimentos (seção some se vazio) | `testimonials` |
+| Prova social da primeira dobra (nota do Google, nº de clientes) | `socialProof` |
+| Fotos da página | `photos` e `servicePhotos` |
 | Perguntas frequentes (alimenta também o rich result do Google) | `faq` |
 
 Nenhum componente precisa ser tocado para atualizar texto.
 
-**Cores, tipografia e texturas:** bloco `@theme` e utilitários em
-`src/app/globals.css`. A linguagem visual é de oficina — cinzas quentes de aço,
-chapa xadrez, faixa zebrada de sinalização, tipografia condensada de placa,
-vermelho para ação e âmbar para sinalização.
+**Cores e tipografia:** bloco `@theme` em `src/app/globals.css`. Base preta com
+o vermelho da marca como única cor de ação, seções escuras alternando com uma
+seção clara, cantos generosos e faixa zebrada como divisor.
 **Logo:** `src/components/Logo.tsx` (monograma provisório em SVG — substituir
 pelo logotipo oficial) e `src/app/icon.svg` (favicon).
+
+---
+
+## Fotos
+
+**A página foi desenhada para foto real e ainda não tem nenhuma.** Enquanto
+`src` estiver vazio, cada espaço mostra um bloco gráfico no tom da seção — o
+layout não quebra, mas metade do impacto se perde. Priorize isso antes de
+rodar tráfego.
+
+Para publicar: salve o arquivo em `public/fotos/`, preencha `src` em
+`src/content/site.ts` (ex.: `"/fotos/fachada.jpg"`) e escreva o `alt`
+descrevendo a cena.
+
+| Slot | Onde aparece | Proporção | Sugestão |
+|---|---|---|---|
+| `photos.fachada` | mosaico do bloco de destaque | 4:3 | fachada ou box principal |
+| `photos.atendimento` | mosaico | 4:3 | mecânico trabalhando no veículo |
+| `photos.pecas` | mosaico | 4:3 | prateleira de peças / estoque |
+| `photos.pneus` | mosaico | 4:3 | pneu sendo montado |
+| `photos.bastidor` | fundo de "Por que escolher" | 16:9 | motor ou box, será escurecido |
+| `servicePhotos.*` | topo de cada card de serviço | 16:10 | uma por serviço |
+
+Exporte em JPG ou WebP com cerca de 200 KB cada — o export é estático e não
+há otimização de imagem em runtime. Fora da proporção indicada, a imagem é
+cortada no centro.
 
 ---
 
@@ -173,8 +199,10 @@ Google**. Para busca local em Sinop, ele pesa mais que o site.
 - FAQ em `<details>` nativo: funciona com leitor de tela e sem JavaScript.
 - `prefers-reduced-motion` respeitado — todas as animações são desligadas.
 - Menu mobile com trava de rolagem e alvos de toque de 44px.
-- HTML da home: ~28 KB comprimido. Nenhuma imagem de terceiros na primeira
-  dobra: o visual do hero é 100% SVG e CSS.
+- Formulário na primeira dobra, sem backend: nenhum JavaScript de terceiros
+  bloqueia a renderização.
+- Fotos carregam com `loading="lazy"` e `decoding="async"`, exceto onde
+  marcado como prioritário.
 
 ---
 
@@ -190,8 +218,11 @@ src/
 │   ├── sitemap.ts / robots.ts / manifest.ts
 │   └── icon.svg
 ├── components/
-│   ├── sections/               Hero, Services, Faq, Contact, Location, ...
+│   ├── sections/               Hero, FeatureBar, Showcase, Services,
+│   │                           Differentials, Process, Faq, Contact, ...
 │   ├── Header.tsx  Footer.tsx  FloatingCta.tsx
+│   ├── LeadForm.tsx            formulário do hero e da seção de orçamento
+│   ├── Photo.tsx               espaço de foto com bloco de espera
 │   ├── CTA.tsx                 botões com rastreamento embutido
 │   ├── Icons.tsx  Logo.tsx  Reveal.tsx  Section.tsx
 │   ├── Analytics.tsx  StructuredData.tsx

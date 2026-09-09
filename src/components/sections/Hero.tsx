@@ -1,47 +1,39 @@
-import { WhatsAppButton, CallButton } from "@/components/CTA";
-import { PinIcon, WrenchIcon } from "@/components/Icons";
+import { business, socialProof } from "@/content/site";
+import { LeadForm } from "@/components/LeadForm";
+import { StarIcon } from "@/components/Icons";
 import { Reveal } from "@/components/Reveal";
-import { business } from "@/content/site";
 
-const trustRow = [
-  "Orçamento aprovado antes do serviço",
-  "Peças novas com nota fiscal",
-  "Garantia de 90 dias por escrito",
-];
+/** Itens da barra de prova social — some quando não há valor preenchido. */
+const proofVisivel = socialProof.filter((item) => item.value.length > 0);
 
 export function Hero() {
   return (
     <section
       id="topo"
-      className="bg-grain relative isolate overflow-hidden pb-16 pt-[calc(var(--header-h)+2.5rem)] sm:pb-24 sm:pt-[calc(var(--header-h)+4rem)]"
+      className="relative isolate overflow-hidden pb-14 pt-[calc(var(--header-h)+2rem)] sm:pb-20 sm:pt-[calc(var(--header-h)+3rem)]"
     >
-      {/* --------------------- Camadas de fundo --------------------- */}
-      <div className="bg-plate absolute inset-0 -z-20 opacity-70" />
-      <div className="bg-bay absolute inset-0 -z-20 [mask-image:radial-gradient(80%_65%_at_50%_10%,#000_10%,transparent_78%)]" />
-      <div className="glow-shop absolute inset-x-0 -top-32 -z-20 h-[34rem]" />
+      <div className="bg-mesh absolute inset-0 -z-20 [mask-image:radial-gradient(75%_60%_at_50%_0%,#000_10%,transparent_78%)]" />
+      <div className="glow-shop absolute inset-x-0 -top-32 -z-20 h-[32rem]" />
 
-      {/* Fita de sinalização no topo, como faixa de área técnica. */}
-      <div className="stripe-hazard absolute inset-x-0 top-0 -z-10 h-1.5 opacity-80" aria-hidden />
-
-      <div className="container-page grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr] lg:gap-12">
+      <div className="container-page grid items-start gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
         {/* --------------------------- Copy --------------------------- */}
-        <div className="max-w-xl">
+        <div className="lg:pt-6">
           <Reveal>
-            <span className="inline-flex items-center gap-2 border-2 border-ink-700 bg-ink-900 px-3 py-1.5 text-[0.76rem] font-semibold uppercase tracking-[0.1em] text-mist">
-              <PinIcon className="h-4 w-4 text-brand-500" />
-              {business.address.street} — {business.city}/{business.state}
+            <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/80 px-3.5 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-mist">
+              <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
+              Peças + serviços — {business.city}/{business.state}
             </span>
           </Reveal>
 
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-[clamp(2.9rem,8.2vw,5.1rem)] font-extrabold text-chalk">
+          <Reveal delay={70}>
+            <h1 className="mt-5 text-[clamp(2.3rem,5.6vw,3.7rem)] text-chalk">
               Seu carro nas mãos de quem{" "}
-              <span className="text-accent">explica antes de cobrar</span>
+              <span className="text-accent">explica antes de cobrar.</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={160}>
-            <p className="mt-6 max-w-lg text-[1.08rem] leading-relaxed text-mist">
+          <Reveal delay={140}>
+            <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-mist">
               Auto center completo em {business.city}: peças novas, serviço bem
               feito e o valor fechado no seu WhatsApp{" "}
               <strong className="font-semibold text-chalk">antes</strong> de
@@ -49,23 +41,35 @@ export function Hero() {
             </p>
           </Reveal>
 
-          <Reveal delay={240}>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <WhatsAppButton
-                source="hero"
-                size="lg"
-                label="Pedir orçamento"
-                className="w-full sm:w-auto"
-              />
-              <CallButton source="hero" size="lg" className="w-full sm:w-auto" />
-            </div>
-          </Reveal>
+          {proofVisivel.length > 0 ? (
+            <Reveal delay={210}>
+              <ul className="mt-7 flex flex-wrap items-center gap-x-7 gap-y-3">
+                {proofVisivel.map((item) => (
+                  <li key={item.label} className="flex items-center gap-2">
+                    {item.kind === "rating" ? (
+                      <span className="flex gap-0.5 text-brand-500" aria-hidden>
+                        {Array.from({ length: 5 }).map((_, i) => (
+                          <StarIcon key={i} className="h-3.5 w-3.5" />
+                        ))}
+                      </span>
+                    ) : null}
+                    <span className="text-[0.95rem] font-bold text-chalk">{item.value}</span>
+                    <span className="text-[0.9rem] text-mist">{item.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          ) : null}
 
-          <Reveal delay={320}>
-            <ul className="mt-9 flex flex-col gap-2.5 border-t-2 border-ink-800 pt-7">
-              {trustRow.map((item) => (
-                <li key={item} className="flex items-center gap-3 text-[0.95rem] text-mist">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center bg-signal/15 text-signal">
+          <Reveal delay={260}>
+            <ul className="mt-7 flex flex-col gap-2.5 border-t border-ink-800 pt-6">
+              {[
+                "Orçamento aprovado antes do serviço",
+                "Peças novas com nota fiscal",
+                "Foto do antes e depois, e a peça velha na sua mão",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2.5 text-[0.95rem] text-mist">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 text-signal">
                     <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                       <path d="m5 12.5 4.5 4.5L19 7" />
                     </svg>
@@ -77,91 +81,9 @@ export function Hero() {
           </Reveal>
         </div>
 
-        {/* ------------------- Emblema estampado ------------------- */}
-        <Reveal delay={200} className="relative mx-auto w-full max-w-[24rem] lg:max-w-none">
-          <div className="relative aspect-square w-full">
-            {/* Anel tracejado — único elemento em movimento, bem lento. */}
-            <svg
-              viewBox="0 0 400 400"
-              className="animate-rotate-slow absolute inset-0 h-full w-full"
-              aria-hidden
-            >
-              <circle
-                cx="200" cy="200" r="192"
-                fill="none" stroke="#3a3330" strokeWidth="2"
-                strokeDasharray="3 14" strokeLinecap="round"
-              />
-            </svg>
-
-            {/* Selo: anéis, rebites e texto curvo. */}
-            <svg viewBox="0 0 400 400" className="absolute inset-0 h-full w-full" aria-hidden>
-              <defs>
-                {/*
-                  Dois arcos separados. O de baixo usa sweep-flag 0 para que
-                  as letras fiquem em pé — com um arco só, a metade inferior
-                  sai de cabeça para baixo.
-                */}
-                <path id="arco-topo" d="M 44,200 a 156,156 0 0 1 312,0" />
-                <path id="arco-base" d="M 56,200 a 144,144 0 0 0 288,0" />
-              </defs>
-
-              <circle cx="200" cy="200" r="176" fill="none" stroke="#3a3330" strokeWidth="2" />
-              <circle cx="200" cy="200" r="132" fill="none" stroke="#4d4441" strokeWidth="1.5" />
-
-              <text
-                className="font-display"
-                fill="#b0a69e"
-                fontSize="30"
-                fontWeight="700"
-                letterSpacing="6"
-                textAnchor="middle"
-              >
-                <textPath href="#arco-topo" startOffset="50%">
-                  AMÉRICA AUTO CENTER
-                </textPath>
-              </text>
-              <text
-                className="font-display"
-                fill="#837872"
-                fontSize="22"
-                fontWeight="600"
-                letterSpacing="5"
-                textAnchor="middle"
-              >
-                <textPath href="#arco-base" startOffset="50%">
-                  SINOP · MATO GROSSO
-                </textPath>
-              </text>
-
-              {/* Losangos onde os dois arcos se encontram. */}
-              <rect x="34" y="194" width="12" height="12" fill="#d9342a" transform="rotate(45 40 200)" />
-              <rect x="354" y="194" width="12" height="12" fill="#d9342a" transform="rotate(45 360 200)" />
-
-              {/* Rebites do anel interno. */}
-              {Array.from({ length: 16 }).map((_, i) => (
-                <circle
-                  key={i}
-                  cx="200" cy="52" r="3.4"
-                  fill="#4d4441"
-                  transform={`rotate(${i * 22.5} 200 200)`}
-                />
-              ))}
-            </svg>
-
-            {/* Disco central */}
-            <div className="absolute inset-[26%] flex flex-col items-center justify-center overflow-hidden rounded-full border-4 border-ink-700 bg-ink-900">
-              <div className="bg-plate absolute inset-0 opacity-70" aria-hidden />
-              <div className="absolute inset-2 rounded-full border border-amber-500/30" aria-hidden />
-
-              <WrenchIcon className="relative h-12 w-12 text-brand-500 sm:h-14 sm:w-14" />
-              <span className="relative mt-2 font-display text-[1.6rem] font-extrabold uppercase leading-none tracking-wide text-chalk sm:text-[1.9rem]">
-                América
-              </span>
-              <span className="relative mt-1 text-[0.58rem] font-bold uppercase tracking-[0.32em] text-amber-400">
-                Auto Center
-              </span>
-            </div>
-          </div>
+        {/* ------------- Formulário na primeira dobra ------------- */}
+        <Reveal delay={120}>
+          <LeadForm source="hero" />
         </Reveal>
       </div>
     </section>
