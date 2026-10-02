@@ -225,11 +225,11 @@ próprio para o Pages, remova essa variável** e ajuste `NEXT_PUBLIC_SITE_URL`.
 ## SEO já implementado
 
 - Metadata completa (title, description, canonical, OpenGraph, Twitter Card).
-- Card de compartilhamento gerado no build (`src/app/opengraph-image.tsx`) — é o
-  que aparece ao colar o link no WhatsApp e no Instagram. O passo
-  `scripts/og.mjs` republica esse card como `og.png`, porque hospedagens
-  estáticas servem arquivo sem extensão como `octet-stream` e a prévia
-  não renderiza.
+- Card de compartilhamento em `public/og.png` — é o que aparece ao colar o link
+  no WhatsApp e no Instagram. É um arquivo estático de propósito: a rota que o
+  Next gera para isso sai sem extensão, e tanto a Vercel quanto o GitHub Pages
+  a servem como `application/octet-stream`, o que faz a prévia não renderizar.
+  Para trocar o card, substitua o arquivo por outro PNG de 1200×630.
 - JSON-LD `AutoRepair` (painel de negócio local), `FAQPage` (acordeão nos
   resultados de busca) e `WebSite`, todos gerados a partir de `site.ts`.
 - `sitemap.xml`, `robots.txt` e `manifest.webmanifest` automáticos.
