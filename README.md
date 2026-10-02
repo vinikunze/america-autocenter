@@ -1,7 +1,10 @@
-# América Auto Center — Landing Page
+# América Auto Center — Site
 
-Landing page de alta conversão da **América Auto Center** (Sinop/MT), construída
-para receber tráfego pago do Google Ads e da Meta.
+Site da **América Auto Center** (Sinop/MT): uma landing page de alta conversão
+mais sete páginas de serviço, construídas para receber tráfego pago do Google
+Ads e da Meta.
+
+**No ar:** https://america-autocenter.vercel.app
 
 Todo o layout foi desenhado em torno de um único objetivo: transformar o clique
 do anúncio em uma conversa no WhatsApp — com o menor atrito possível e com cada
@@ -178,10 +181,21 @@ Origens instrumentadas: `header`, `hero`, `servicos`, `processo`, `contato`,
 
 O build gera arquivos estáticos, então qualquer hospedagem serve.
 
-**Vercel** (melhor opção quando houver domínio próprio)
-1. Importe o repositório.
-2. Framework: Next.js. Nada mais a configurar.
-3. Cadastre as variáveis `NEXT_PUBLIC_*` em *Settings → Environment Variables*.
+**Vercel — já configurado e no ar**
+
+O site está publicado em **https://america-autocenter.vercel.app**, com deploy
+automático a cada push na `main`. Projeto `america-autocenter`, na conta
+`vinicius-kunzes-projects`.
+
+A variável `NEXT_PUBLIC_SITE_URL` já está cadastrada apontando para esse
+endereço — ela alimenta canonical, sitemap, OpenGraph e schema.org. **Ao
+registrar o domínio próprio**, adicione o domínio em *Settings → Domains* e
+troque o valor dessa variável; sem isso, a prévia do link no WhatsApp continua
+buscando a imagem no endereço antigo.
+
+As demais variáveis (`NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_GOOGLE_ADS_ID`,
+`NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL`, `NEXT_PUBLIC_META_PIXEL_ID`) entram
+em *Settings → Environment Variables* quando as campanhas forem criadas.
 
 **Netlify / Cloudflare Pages**
 - Build: `npm run build` · Publish directory: `out`
@@ -211,11 +225,11 @@ próprio para o Pages, remova essa variável** e ajuste `NEXT_PUBLIC_SITE_URL`.
 ## SEO já implementado
 
 - Metadata completa (title, description, canonical, OpenGraph, Twitter Card).
-- Card de compartilhamento gerado no build (`src/app/opengraph-image.tsx`) — é o
-  que aparece ao colar o link no WhatsApp e no Instagram. O passo
-  `scripts/og.mjs` republica esse card como `og.png`, porque hospedagens
-  estáticas servem arquivo sem extensão como `octet-stream` e a prévia
-  não renderiza.
+- Card de compartilhamento em `public/og.png` — é o que aparece ao colar o link
+  no WhatsApp e no Instagram. É um arquivo estático de propósito: a rota que o
+  Next gera para isso sai sem extensão, e tanto a Vercel quanto o GitHub Pages
+  a servem como `application/octet-stream`, o que faz a prévia não renderizar.
+  Para trocar o card, substitua o arquivo por outro PNG de 1200×630.
 - JSON-LD `AutoRepair` (painel de negócio local), `FAQPage` (acordeão nos
   resultados de busca) e `WebSite`, todos gerados a partir de `site.ts`.
 - `sitemap.xml`, `robots.txt` e `manifest.webmanifest` automáticos.
