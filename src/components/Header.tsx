@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { WhatsAppButton } from "@/components/CTA";
 import { MenuIcon, CloseIcon, PhoneIcon, WhatsAppIcon } from "@/components/Icons";
@@ -10,8 +11,11 @@ import { business } from "@/content/site";
 import { trackLead } from "@/lib/analytics";
 
 /*
- * Âncoras absolutas ("/#servicos" em vez de "#servicos"): nas páginas de
- * serviço, a âncora relativa não encontra a seção e o clique não faz nada.
+ * Âncoras absolutas ("/#servicos" em vez de "#servicos") para funcionarem
+ * também nas páginas de serviço, onde a âncora relativa não encontra a
+ * seção. Os links passam por <Link>, que aplica o basePath do deploy —
+ * com <a> cru, em hospedagem servida de subdiretório o clique cai na raiz
+ * do domínio e dá 404.
  */
 const nav = [
   { href: "/#servicos", label: "Serviços" },
@@ -36,20 +40,20 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4">
-          <a href="/" aria-label="América Auto Center — início" className="shrink-0">
+          <Link href="/" aria-label="América Auto Center — início" className="shrink-0">
             <Logo className="h-11 sm:h-13" />
-          </a>
+          </Link>
 
           <nav aria-label="Navegação principal" className="hidden lg:block">
             <ul className="flex items-center gap-0.5">
               {nav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     className="relative whitespace-nowrap rounded-lg px-3 py-2 text-[0.8rem] font-semibold uppercase tracking-[0.05em] text-mist transition-colors duration-200 hover:text-brand-400"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -126,7 +130,7 @@ export function Header() {
             <ul className="flex flex-col">
               {nav.map((item, i) => (
                 <li key={item.href} className="border-b border-ink-800 last:border-0">
-                  <a
+                  <Link
                     href={item.href}
                     onClick={() => setOpen(false)}
                     style={{ transitionDelay: `${open ? 60 + i * 45 : 0}ms` }}
@@ -138,7 +142,7 @@ export function Header() {
                     <span className="text-sm font-bold text-brand-500">
                       0{i + 1}
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

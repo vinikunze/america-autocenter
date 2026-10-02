@@ -15,15 +15,20 @@ export const telUrl = `tel:+${business.phone.raw}`;
 
 export const mailUrl = `mailto:${business.email}`;
 
-/** Abre a rota no app de mapas do dispositivo. */
-export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
-  business.address.mapsQuery,
-)}`;
+const { lat, lng } = business.address;
 
-/** Iframe do mapa sem exigir chave de API. */
-export const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(
-  business.address.mapsQuery,
-)}&z=16&output=embed`;
+/**
+ * Rota até a oficina, pelas coordenadas da ficha no Google.
+ * Por endereço, o Google às vezes para no número errado da quadra;
+ * por coordenada, chega na porta.
+ */
+export const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+
+/** Iframe do mapa, sem exigir chave de API. */
+export const mapEmbedUrl = `https://maps.google.com/maps?q=${lat},${lng}&z=17&hl=pt-BR&output=embed`;
+
+/** Ficha do negócio no Google — avaliações, fotos e horários. */
+export const googleMapsUrl = business.address.googleMapsUrl;
 
 export const fullAddress = [
   business.address.street,

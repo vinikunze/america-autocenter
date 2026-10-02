@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { business } from "@/content/site";
 import { Logo } from "@/components/Logo";
 import { InstagramIcon, PinIcon, MailIcon, PhoneIcon } from "@/components/Icons";
@@ -50,12 +51,12 @@ export function Footer() {
               <ul className="mt-5 flex flex-col gap-2.5">
                 {group.links.map((link) => (
                   <li key={link.href}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-[0.9rem] text-slate-soft transition-colors hover:text-chalk"
                     >
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>

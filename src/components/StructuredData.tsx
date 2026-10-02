@@ -32,12 +32,18 @@ export function StructuredData() {
       postalCode: business.address.zip,
       addressCountry: "BR",
     },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: business.address.lat,
+      longitude: business.address.lng,
+    },
+    hasMap: business.address.googleMapsUrl,
     areaServed: {
       "@type": "City",
       name: `${business.city}, ${business.state}`,
     },
     openingHours: business.hoursSchema,
-    sameAs: [business.instagram.url],
+    sameAs: [business.instagram.url, business.address.googleMapsUrl],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Serviços automotivos",
