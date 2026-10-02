@@ -1,0 +1,13 @@
+Coloque aqui as fotos da oficina.
+
+Depois de salvar o arquivo nesta pasta, preencha o caminho em
+src/content/site.ts (blocos `photos` e `servicePhotos`), por exemplo:
+
+    fachada: {
+      src: "/fotos/fachada.jpg",
+      alt: "Fachada da América Auto Center em Sinop",
+      ...
+    }
+
+Proporções e sugestão de conteúdo de cada slot estão no README,
+na seção "Fotos". JPG ou WebP, ~200 KB por arquivo.
