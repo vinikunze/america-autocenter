@@ -8,7 +8,6 @@ import { Differentials } from "@/components/sections/Differentials";
 import { Process } from "@/components/sections/Process";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Marquee } from "@/components/sections/Marquee";
-import { Contact } from "@/components/sections/Contact";
 import { Faq } from "@/components/sections/Faq";
 import { Location } from "@/components/sections/Location";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -29,7 +28,6 @@ export default function Home() {
         <Process />
         <Marquee />
         <Testimonials />
-        <Contact />
         <Faq />
         <Location />
         <FinalCta />

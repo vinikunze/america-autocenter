@@ -32,8 +32,16 @@ export const business = {
     city: "Sinop",
     state: "MT",
     zip: "78550-617",
-    /** Usado no link "Como chegar" e no iframe do mapa. */
-    mapsQuery: "Rua das Primaveras, 7354 - Sinop - MT, 78550-617",
+    /**
+     * Coordenadas da ficha oficial da oficina no Google Maps.
+     * Buscar por endereço deixava o alfinete na rua, não na loja —
+     * estas coordenadas vêm do próprio registro do negócio no Google.
+     */
+    lat: -11.822386,
+    lng: -55.4916222,
+    /** Ficha do negócio no Google Maps (avaliações, fotos, horários). */
+    googleMapsUrl:
+      "https://www.google.com/maps/place/Am%C3%A9rica+Auto+Center/@-11.8223361,-55.4924968,17z/data=!3m1!4b1!4m6!3m5!1s0x93a781000dbf01e7:0xe87d5a7d8e6bdf91!8m2!3d-11.822386!4d-55.4916222!16s%2Fg%2F11x_f8rbct",
   },
 
   /** Confirmado pelo totem da fachada: (66) 9 9260-7556. */

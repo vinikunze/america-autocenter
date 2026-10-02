@@ -1,6 +1,17 @@
 import { WhatsAppButton, CallButton } from "@/components/CTA";
 import { Reveal } from "@/components/Reveal";
 
+/**
+ * Argumentos que ficavam na seção de orçamento. Ela foi removida por
+ * repetir o mesmo formulário da primeira dobra — dois formulários
+ * idênticos na mesma página dividem a atenção sem aumentar conversão.
+ */
+const garantias = [
+  "Você não paga nada para receber o diagnóstico",
+  "Nenhuma peça é trocada sem a sua autorização",
+  "Se não for com a gente, você leva o orçamento e compara",
+];
+
 /** Último ponto de conversão antes do rodapé. */
 export function FinalCta() {
   return (
@@ -21,7 +32,20 @@ export function FinalCta() {
             Sem compromisso, sem pegadinha.
           </p>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <ul className="mt-9 flex flex-col items-center justify-center gap-x-7 gap-y-3 sm:flex-row sm:flex-wrap">
+            {garantias.map((item) => (
+              <li key={item} className="flex items-center gap-2.5 text-[0.93rem] text-mist">
+                <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-signal/15 text-signal">
+                  <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="m5 12.5 4.5 4.5L19 7" />
+                  </svg>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <WhatsAppButton
               source="contato"
               size="lg"
