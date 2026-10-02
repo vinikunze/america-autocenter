@@ -21,7 +21,7 @@ export function Hero() {
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-ink-700 bg-ink-900/80 px-3.5 py-1.5 text-[0.72rem] font-bold uppercase tracking-[0.14em] text-mist">
               <span className="h-1.5 w-1.5 rounded-full bg-brand-500" aria-hidden />
-              Peças + serviços — {business.city}/{business.state}
+              Auto center em {business.city}/{business.state}
             </span>
           </Reveal>
 
@@ -34,10 +34,10 @@ export function Hero() {
 
           <Reveal delay={140}>
             <p className="mt-5 max-w-lg text-[1.05rem] leading-relaxed text-mist">
-              Auto center completo em {business.city}: peças novas, serviço bem
-              feito e o valor fechado no seu WhatsApp{" "}
-              <strong className="font-semibold text-chalk">antes</strong> de
-              qualquer reparo começar.
+              Alinhamento, freios, suspensão, escapamento e revisão em{" "}
+              {business.city}. Você recebe o valor fechado no seu WhatsApp{" "}
+              <strong className="font-semibold text-chalk">antes</strong> da
+              gente encostar no carro.
             </p>
           </Reveal>
 

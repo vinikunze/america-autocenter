@@ -10,7 +10,7 @@ export function Process() {
         align="center"
         eyebrow="Como funciona"
         title={<>Três passos entre o problema e o carro pronto</>}
-        description="Sem burocracia, sem enrolação e sem aquela ligação surpresa dizendo que apareceu mais coisa."
+        description="Nada de burocracia nem daquela ligação no meio do serviço dizendo que apareceu mais coisa."
       />
 
       <ol className="relative mt-16 grid gap-8 md:grid-cols-3 [&>li]:relative">

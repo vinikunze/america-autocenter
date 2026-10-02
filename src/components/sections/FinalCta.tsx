@@ -24,12 +24,12 @@ export function FinalCta() {
           <div className="stripe-hazard absolute inset-x-0 top-0 h-2" aria-hidden />
 
           <h2 className="mx-auto max-w-3xl text-[clamp(2rem,4.8vw,3.1rem)] text-chalk">
-            Seu carro parado é dinheiro parado{" "}
-            <span className="text-accent">— resolve hoje.</span>
+            Seu carro parado é dinheiro parado.{" "}
+            <span className="text-accent">Resolve hoje.</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-[1rem] leading-relaxed text-mist">
-            Mande uma mensagem agora e receba o orçamento antes de trazer o veículo.
-            Sem compromisso, sem pegadinha.
+            Mande uma mensagem agora e receba o orçamento antes mesmo de trazer
+            o veículo. Sem compromisso e sem pegadinha.
           </p>
 
           <ul className="mt-9 flex flex-col items-center justify-center gap-x-7 gap-y-3 sm:flex-row sm:flex-wrap">

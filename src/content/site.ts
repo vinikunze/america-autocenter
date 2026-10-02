@@ -20,9 +20,9 @@ export const business = {
   legalName: "A. M. Custódio LTDA",
   cnpj: "61.356.543/0001-30",
   /** Descrição curta (meta description / OpenGraph). */
-  tagline: "Centro automotivo completo em Sinop/MT",
+  tagline: "Auto center em Sinop/MT",
   shortDescription:
-    "Peças, acessórios e serviços automotivos com diagnóstico honesto, peças de primeira linha e garantia por escrito. Agende pelo WhatsApp e saia com o carro pronto no mesmo dia.",
+    "Alinhamento, freios, suspensão, escapamento e revisão em Sinop. Você recebe o orçamento fechado no WhatsApp antes do serviço começar, e tudo sai com garantia por escrito.",
 
   city: "Sinop",
   state: "MT",
@@ -59,8 +59,8 @@ export const business = {
 
   /** CONFIRMAR: horários presumidos do padrão do setor em Sinop. */
   hours: [
-    { days: "Segunda a sexta", time: "08h00 – 18h00" },
-    { days: "Sábado", time: "08h00 – 12h00" },
+    { days: "Segunda a sexta", time: "08h00 às 18h00" },
+    { days: "Sábado", time: "08h00 às 12h00" },
     { days: "Domingo e feriados", time: "Fechado" },
   ],
   /** Formato schema.org (openingHours). Mantenha em sincronia com `hours`. */
@@ -150,7 +150,7 @@ export const photos = {
     src: "/fotos/fachada.jpg",
     alt: "Fachada da América Auto Center na Rua das Primaveras, em Sinop",
     caption: "Nossa estrutura",
-    legend: "Rua das Primaveras, 7354 — Sinop/MT",
+    legend: "Rua das Primaveras, 7354, Sinop/MT",
   },
   /** 4:3 — atendimento no box, mecânico trabalhando. */
   atendimento: {
@@ -213,7 +213,7 @@ export const services: Service[] = [
     icon: "steering",
     title: "Alinhamento e balanceamento",
     description:
-      "Geometria conferida e rodas equilibradas: o pneu dura mais, o volante para de vibrar e o carro anda reto.",
+      "Com a geometria conferida e as rodas equilibradas, o pneu dura mais, o volante para de vibrar e o carro volta a andar reto.",
     points: ["Alinhamento", "Balanceamento", "Rodízio de pneus"],
   },
   {
@@ -229,7 +229,7 @@ export const services: Service[] = [
     icon: "brake",
     title: "Freios",
     description:
-      "Pastilhas, discos, tambores e fluido. É o item que não admite economia — e onde a peça certa faz toda a diferença.",
+      "Pastilhas, discos, tambores e fluido. É o item que não admite economia, e onde a peça certa faz toda a diferença.",
     points: ["Medição de disco", "Sangria do sistema", "Teste antes de entregar"],
   },
   {
@@ -237,7 +237,7 @@ export const services: Service[] = [
     icon: "shock",
     title: "Suspensão",
     description:
-      "Amortecedores, molas, bandejas, pivôs e terminais. Fim do barulho na lombada e do carro puxando para o lado.",
+      "Amortecedores, molas, bandejas, pivôs e terminais. Acaba com o barulho na lombada e com o carro puxando para o lado.",
     points: ["Diagnóstico de ruído", "Peças reforçadas", "Feita para estrada de MT"],
   },
   {
@@ -245,7 +245,7 @@ export const services: Service[] = [
     icon: "clipboard",
     title: "Revisão geral",
     description:
-      "Checagem completa antes da viagem ou da revisão de rotina: você descobre o problema antes que ele custe caro.",
+      "Checagem completa antes da viagem ou na revisão de rotina. Você descobre o problema enquanto ele ainda é barato.",
     points: ["Checklist completo", "Prioridade do que é urgente", "Orçamento na hora"],
   },
   {
@@ -261,7 +261,7 @@ export const services: Service[] = [
     icon: "injector",
     title: "Limpeza de bicos",
     description:
-      "Bicos injetores limpos e testados: motor volta a pegar liso, consumo cai e a marcha lenta para de oscilar.",
+      "Bicos injetores limpos e testados: o motor volta a pegar liso, o consumo cai e a marcha lenta para de oscilar.",
     points: ["Limpeza e teste", "Menos consumo", "Motor mais macio"],
   },
 ];
@@ -275,25 +275,25 @@ export const differentials = [
     icon: "shield" as IconName,
     title: "Orçamento antes, sempre",
     description:
-      "Nenhuma peça é trocada sem o seu ok. Você recebe o valor fechado no WhatsApp e decide com calma.",
+      "Nenhuma peça é trocada sem o seu ok. Você recebe o valor fechado no WhatsApp e decide com calma, sem ninguém te apressando.",
   },
   {
     icon: "camera" as IconName,
     title: "Você vê o que foi feito",
     description:
-      "Fotos do antes e depois e a peça velha na sua mão. Transparência não é discurso, é procedimento.",
+      "Você recebe foto do antes e do depois, e leva a peça velha na mão se quiser. Aqui transparência não é discurso, é como a gente trabalha.",
   },
   {
     icon: "stamp" as IconName,
     title: "Garantia por escrito",
     description:
-      "Peça e mão de obra cobertas por 90 dias. Deu problema no que a gente mexeu, a gente resolve.",
+      "Peça e mão de obra cobertas por 90 dias. Se der problema no que a gente mexeu, é só voltar que resolvemos.",
   },
   {
     icon: "clock" as IconName,
     title: "Agilidade de verdade",
     description:
-      "Serviços de manutenção rápida saem no mesmo dia. Seu carro é sua ferramenta de trabalho.",
+      "Serviço de manutenção rápida sai no mesmo dia. A gente sabe que o seu carro é sua ferramenta de trabalho.",
   },
 ];
 
@@ -305,17 +305,17 @@ export const steps = [
   {
     title: "Chame no WhatsApp",
     description:
-      "Conte o que está acontecendo com o carro. Se souber a placa, o atendimento fica ainda mais rápido.",
+      "Conte o que está acontecendo com o carro. Se souber o modelo e o ano, o atendimento fica ainda mais rápido.",
   },
   {
     title: "Diagnóstico e orçamento",
     description:
-      "Nossa equipe avalia o veículo, mostra o que precisa ser feito e envia o valor fechado antes de começar.",
+      "A gente avalia o veículo, mostra o que precisa ser feito e manda o valor fechado antes de começar qualquer coisa.",
   },
   {
     title: "Serviço feito e garantido",
     description:
-      "Você aprova, a gente executa e devolve o carro pronto, testado e com garantia por escrito.",
+      "Você aprova, a gente faz e devolve o carro pronto, testado e com garantia por escrito.",
   },
 ];
 
@@ -343,32 +343,32 @@ export const faq = [
   {
     question: "Preciso agendar ou posso passar aí direto?",
     answer:
-      "Você pode passar direto, mas quem agenda pelo WhatsApp tem prioridade no box e evita espera. Basta mandar o modelo do carro e o que está acontecendo.",
+      "Pode passar direto, sim. Mas quem agenda pelo WhatsApp tem prioridade no box e evita espera. Basta mandar o modelo do carro e o que está acontecendo.",
   },
   {
     question: "Vocês fazem orçamento sem compromisso?",
     answer:
-      "Sim. Avaliamos o veículo, explicamos o que precisa ser feito e enviamos o valor fechado. Nada é trocado sem a sua aprovação.",
+      "Sim. A gente avalia o veículo, explica o que precisa ser feito e manda o valor fechado. Nada é trocado sem a sua aprovação.",
   },
   {
     question: "Quais formas de pagamento vocês aceitam?",
     answer:
-      "Pix, dinheiro, cartão de débito e crédito parcelado. Fale com a nossa equipe para conferir as condições de parcelamento vigentes.",
+      "Pix, dinheiro, cartão de débito e crédito parcelado. Chame no WhatsApp para confirmar as condições de parcelamento do momento.",
   },
   {
     question: "A peça e o serviço têm garantia?",
     answer:
-      "Sim. Trabalhamos com peças novas de marcas reconhecidas e damos garantia por escrito de 90 dias em peça e mão de obra.",
+      "Tem. Trabalhamos com peças novas de marcas reconhecidas e damos 90 dias de garantia por escrito, em peça e mão de obra.",
   },
   {
     question: "Vocês atendem carros de qualquer marca?",
     answer:
-      "Atendemos as principais marcas nacionais e importadas que circulam em Sinop e região, incluindo utilitários e picapes.",
+      "Atendemos as principais marcas nacionais e importadas que rodam em Sinop e região, incluindo utilitários e picapes.",
   },
   {
     question: "Onde fica a América Auto Center?",
     answer:
-      "Estamos na Rua das Primaveras, 7354, em Sinop/MT. Toque em “Como chegar” no site e o Google Maps traça a rota a partir de onde você estiver.",
+      "Estamos na Rua das Primaveras, 7354, em Sinop. É só tocar em “Como chegar” aqui no site que o Google Maps traça a rota de onde você estiver.",
   },
 ];
 

@@ -9,7 +9,7 @@ const navGroups = [
     title: "Navegação",
     links: [
       { href: "/#servicos", label: "Serviços" },
-      { href: "/#diferenciais", label: "Por que a América" },
+      { href: "/#diferenciais", label: "Diferenciais" },
       { href: "/#processo", label: "Como funciona" },
       { href: "/#duvidas", label: "Dúvidas frequentes" },
       { href: "/#local", label: "Onde estamos" },
@@ -29,8 +29,8 @@ export function Footer() {
           <div>
             <Logo className="h-12" />
             <p className="mt-5 max-w-xs text-[0.9rem] leading-relaxed text-slate-soft">
-              {business.tagline}. Peças, acessórios e serviços com diagnóstico
-              honesto e garantia por escrito.
+              {business.tagline}. Alinhamento, freios, suspensão, escapamento e
+              revisão, com orçamento fechado antes e garantia por escrito.
             </p>
             <a
               href={business.instagram.url}

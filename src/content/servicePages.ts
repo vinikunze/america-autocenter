@@ -47,7 +47,7 @@ export const servicePages: ServicePage[] = [
       "Carro puxando para o lado, volante torto ou vibrando? Alinhamento e balanceamento na América Auto Center, em Sinop. Orçamento pelo WhatsApp antes do serviço.",
     heading: "Alinhamento e balanceamento em Sinop",
     intro:
-      "São dois serviços diferentes que resolvem problemas diferentes, e por isso costumam ser feitos juntos. O alinhamento acerta os ângulos das rodas — é o que faz o carro andar reto e o pneu gastar por igual. O balanceamento distribui o peso de cada roda — é o que tira a vibração do volante em velocidade.",
+      "São dois serviços diferentes, por isso costumam ser feitos juntos. O alinhamento acerta os ângulos das rodas, e é ele que faz o carro andar reto e o pneu gastar por igual. Já o balanceamento distribui o peso de cada roda, e é o que tira a vibração do volante em velocidade.",
     sintomas: [
       "O carro puxa para um lado quando você solta um pouco o volante",
       "O volante fica torto mesmo com o carro andando reto",
@@ -64,7 +64,7 @@ export const servicePages: ServicePage[] = [
       {
         titulo: "Medição dos ângulos",
         texto:
-          "As rodas são medidas e comparadas com a especificação do fabricante do veículo — cada modelo tem a sua.",
+          "As rodas são medidas e comparadas com a especificação do fabricante. Cada modelo tem a sua.",
       },
       {
         titulo: "Correção e balanceamento",
@@ -81,7 +81,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "De quanto em quanto tempo preciso alinhar o carro?",
         answer:
-          "A recomendação geral é a cada 10 mil km. Mas vale antes disso sempre que você trocar pneus, mexer na suspensão ou pegar um buraco forte — e em estrada de Mato Grosso isso acontece com frequência.",
+          "A recomendação geral é a cada 10 mil km. Mas vale antes disso sempre que você trocar pneus, mexer na suspensão ou pegar um buraco forte. Em estrada de Mato Grosso, isso acontece com frequência.",
       },
       {
         question: "Alinhamento resolve a vibração do volante?",
@@ -115,7 +115,7 @@ export const servicePages: ServicePage[] = [
       {
         titulo: "Conferência da especificação",
         texto:
-          "Cada motor pede um óleo específico. Usamos o que o fabricante do seu veículo determina — não o que está sobrando na prateleira.",
+          "Cada motor pede um óleo específico. Usamos o que o fabricante do seu veículo determina, não o que está sobrando na prateleira.",
       },
       {
         titulo: "Drenagem e troca do filtro",
@@ -137,7 +137,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "De quanto em quanto tempo devo trocar o óleo?",
         answer:
-          "Depende do motor e do tipo de óleo — o manual do veículo traz o intervalo. Vale lembrar que o prazo também conta: mesmo rodando pouco, o óleo envelhece e precisa ser trocado.",
+          "Depende do motor e do tipo de óleo. O manual do veículo traz o intervalo certo. Vale lembrar que o prazo também conta: mesmo rodando pouco, o óleo envelhece e precisa ser trocado.",
       },
       {
         question: "Preciso trocar o filtro junto?",
@@ -154,15 +154,15 @@ export const servicePages: ServicePage[] = [
   {
     id: "freios",
     slug: "freios",
-    metaTitle: "Freios em Sinop/MT — pastilha, disco e fluido",
+    metaTitle: "Freios em Sinop/MT: pastilha, disco e fluido",
     metaDescription:
       "Pastilhas, discos, tambores e fluido de freio na América Auto Center, em Sinop/MT. Medição antes de trocar e teste antes de entregar. Orçamento pelo WhatsApp.",
     heading: "Freios em Sinop",
     intro:
-      "Freio é o único item do carro em que economizar não tem desconto que compense. A boa notícia é que ele avisa antes de falhar — quase sempre com barulho ou com mudança no pedal. Quem leva no primeiro sinal costuma trocar só a pastilha; quem espera, troca o disco junto.",
+      "Freio é o único item do carro em que economizar não compensa nunca. A boa notícia é que ele avisa antes de falhar, quase sempre com barulho ou com uma mudança no pedal. Quem leva no primeiro sinal costuma trocar só a pastilha. Quem espera, acaba trocando o disco junto.",
     sintomas: [
       "Barulho agudo de guincho ao frear",
-      "Barulho de metal raspando — esse já é sinal de que passou do ponto",
+      "Barulho de metal raspando, que já é sinal de que passou do ponto",
       "O pedal afunda mais do que antes ou ficou esponjoso",
       "O carro puxa para um lado quando você freia",
       "O volante ou o pedal treme na frenagem",
@@ -204,19 +204,19 @@ export const servicePages: ServicePage[] = [
       {
         question: "E o fluido de freio, troca quando?",
         answer:
-          "O fluido absorve umidade com o tempo, e isso reduz a eficiência da frenagem. O intervalo vem no manual do veículo — normalmente a cada dois anos.",
+          "O fluido absorve umidade com o tempo, e isso reduz a eficiência da frenagem. O intervalo vem no manual do veículo, normalmente a cada dois anos.",
       },
     ],
   },
   {
     id: "suspensao",
     slug: "suspensao",
-    metaTitle: "Suspensão em Sinop/MT — amortecedor, mola e pivô",
+    metaTitle: "Suspensão em Sinop/MT: amortecedor, mola e pivô",
     metaDescription:
       "Barulho na lombada, carro balançando ou puxando para o lado? Suspensão na América Auto Center, em Sinop/MT. Diagnóstico e orçamento antes do serviço.",
     heading: "Suspensão em Sinop",
     intro:
-      "Suspensão boa não é conforto — é segurança. É ela que mantém o pneu grudado no chão quando você freia ou desvia de alguma coisa. E em quem roda nas estradas da região, ela trabalha mais do que a média do país.",
+      "Suspensão boa não é só conforto, é segurança. É ela que mantém o pneu grudado no chão quando você freia ou desvia de alguma coisa. E quem roda nas estradas da região exige bem mais dela do que a média do país.",
     sintomas: [
       "Barulho seco ao passar em lombada ou buraco",
       "O carro continua balançando depois de uma ondulação na pista",
@@ -229,7 +229,7 @@ export const servicePages: ServicePage[] = [
       {
         titulo: "Diagnóstico do ruído",
         texto:
-          "Barulho de suspensão vem de muitos lugares — amortecedor, mola, bandeja, pivô, terminal, bieleta, coxim. Localizamos a origem antes de orçar.",
+          "Barulho de suspensão vem de muitos lugares: amortecedor, mola, bandeja, pivô, terminal, bieleta, coxim. Localizamos a origem antes de orçar.",
       },
       {
         titulo: "Inspeção dos dois lados",
@@ -268,12 +268,12 @@ export const servicePages: ServicePage[] = [
   {
     id: "revisao",
     slug: "revisao-geral",
-    metaTitle: "Revisão geral em Sinop/MT — checagem completa",
+    metaTitle: "Revisão geral em Sinop/MT: checagem completa",
     metaDescription:
       "Revisão geral antes da viagem ou de rotina na América Auto Center, em Sinop/MT. Você recebe o que é urgente e o que pode esperar, com o valor antes.",
     heading: "Revisão geral em Sinop",
     intro:
-      "A revisão existe para você descobrir o problema enquanto ele é barato. Quase todo reparo caro começou como um item simples que ninguém olhou a tempo — e numa viagem pela BR, o que era uma peça vira um guincho.",
+      "A revisão existe para você descobrir o problema enquanto ele ainda é barato. Quase todo reparo caro começou como um item simples que ninguém olhou a tempo. E numa viagem pela BR, o que era uma peça vira um guincho.",
     sintomas: [
       "Você vai pegar estrada e quer sair tranquilo",
       "Faz tempo que o carro não passa por uma checagem",
@@ -319,7 +319,7 @@ export const servicePages: ServicePage[] = [
   {
     id: "escapamento",
     slug: "escapamento",
-    metaTitle: "Escapamento em Sinop/MT — solda, silencioso e catalisador",
+    metaTitle: "Escapamento em Sinop/MT: solda, silencioso e catalisador",
     metaDescription:
       "Escapamento barulhento, furado ou com cheiro entrando no carro? Solda e troca na América Auto Center, em Sinop/MT. Orçamento pelo WhatsApp antes.",
     heading: "Escapamento em Sinop",
@@ -359,7 +359,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Dá para soldar ou tem que trocar?",
         answer:
-          "Depende do estado da peça. Furo pontual em peça ainda firme normalmente é soldado. Peça muito corroída não segura a solda e precisa ser trocada — mostramos a situação antes de orçar.",
+          "Depende do estado da peça. Furo pontual em peça ainda firme normalmente é soldado. Peça muito corroída não segura a solda e precisa ser trocada. De qualquer forma, mostramos a situação antes de orçar.",
       },
       {
         question: "Escapamento furado aumenta o consumo?",
@@ -381,7 +381,7 @@ export const servicePages: ServicePage[] = [
       "Marcha lenta oscilando, falha ao acelerar ou consumo alto? Limpeza e teste de bicos injetores na América Auto Center, em Sinop/MT.",
     heading: "Limpeza de bicos injetores em Sinop",
     intro:
-      "O bico injetor pulveriza o combustível dentro do motor. Quando ele entope, o jato perde a forma e o motor passa a receber combustível de um jeito irregular — daí vem a falha, a marcha lenta oscilando e o consumo subindo sem explicação.",
+      "O bico injetor pulveriza o combustível dentro do motor. Quando entope, o jato perde a forma e o motor passa a receber combustível de um jeito irregular. Daí vem a falha, a marcha lenta oscilando e o consumo subindo sem explicação.",
     sintomas: [
       "A marcha lenta oscila, parece que o carro vai morrer parado",
       "O motor falha ou engasga ao acelerar",
@@ -394,7 +394,7 @@ export const servicePages: ServicePage[] = [
       {
         titulo: "Diagnóstico antes de desmontar",
         texto:
-          "Nem toda falha de motor é bico sujo — vela, bobina e sensor dão sintoma parecido. Confirmamos a causa antes de mexer.",
+          "Nem toda falha de motor é bico sujo. Vela, bobina e sensor dão sintoma parecido, então confirmamos a causa antes de mexer.",
       },
       {
         titulo: "Remoção e teste",
@@ -416,7 +416,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "De quanto em quanto tempo preciso limpar os bicos?",
         answer:
-          "Não é um item de troca por quilometragem — se faz quando o sintoma aparece ou o teste indica. Combustível de má qualidade antecipa bastante esse momento.",
+          "Não é um item de troca por quilometragem. Se faz quando o sintoma aparece ou quando o teste indica. Combustível de má qualidade antecipa bastante esse momento.",
       },
       {
         question: "A limpeza resolve sempre?",

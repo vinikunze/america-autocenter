@@ -102,8 +102,8 @@ export function LeadForm({
                 {service.title}
               </option>
             ))}
-            <option value="Não sei / preciso de diagnóstico">
-              Não sei — preciso de um diagnóstico
+            <option value="Não sei, preciso de diagnóstico">
+              Não sei, preciso de um diagnóstico
             </option>
           </select>
         </label>
