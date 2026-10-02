@@ -2,11 +2,12 @@ import { business, faq, services, siteUrl } from "@/content/site";
 import { fullAddress } from "@/lib/links";
 
 /**
- * JSON-LD para rich results do Google:
- *  - AutoRepair (LocalBusiness) alimenta o painel de negócio local;
- *  - FAQPage habilita o acordeão de perguntas direto na busca.
- * Ambos são gerados a partir de `src/content/site.ts`, então nunca
- * ficam dessincronizados do conteúdo visível.
+ * JSON-LD do negócio e do site, aplicado a todas as páginas.
+ *
+ * O FAQPage NÃO entra aqui: ele é específico de cada página, e repetir o
+ * da home em toda URL criaria dois FAQPage no mesmo HTML — marcação
+ * inválida. A home usa <HomeFaqSchema>, e cada página de serviço gera o
+ * seu a partir do próprio FAQ.
  */
 export function StructuredData() {
   const localBusiness = {
@@ -51,16 +52,6 @@ export function StructuredData() {
     },
   };
 
-  const faqPage = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faq.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  };
-
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -71,7 +62,7 @@ export function StructuredData() {
 
   return (
     <>
-      {[localBusiness, faqPage, website].map((schema, i) => (
+      {[localBusiness, website].map((schema, i) => (
         <script
           key={i}
           type="application/ld+json"
@@ -79,5 +70,25 @@ export function StructuredData() {
         />
       ))}
     </>
+  );
+}
+
+/** FAQPage da home. Montado só nela, para não duplicar nas outras rotas. */
+export function HomeFaqSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }

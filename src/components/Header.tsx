@@ -9,12 +9,16 @@ import { telUrl, whatsappUrl } from "@/lib/links";
 import { business } from "@/content/site";
 import { trackLead } from "@/lib/analytics";
 
+/*
+ * Âncoras absolutas ("/#servicos" em vez de "#servicos"): nas páginas de
+ * serviço, a âncora relativa não encontra a seção e o clique não faz nada.
+ */
 const nav = [
-  { href: "#servicos", label: "Serviços" },
-  { href: "#diferenciais", label: "Diferenciais" },
-  { href: "#processo", label: "Processo" },
-  { href: "#duvidas", label: "Dúvidas" },
-  { href: "#local", label: "Localização" },
+  { href: "/#servicos", label: "Serviços" },
+  { href: "/#diferenciais", label: "Diferenciais" },
+  { href: "/#processo", label: "Processo" },
+  { href: "/#duvidas", label: "Dúvidas" },
+  { href: "/#local", label: "Localização" },
 ];
 
 export function Header() {
@@ -32,7 +36,7 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4">
-          <a href="#topo" aria-label="América Auto Center — início" className="shrink-0">
+          <a href="/" aria-label="América Auto Center — início" className="shrink-0">
             <Logo className="h-11 sm:h-13" />
           </a>
 

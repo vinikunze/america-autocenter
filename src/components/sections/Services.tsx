@@ -1,4 +1,6 @@
+import Link from "next/link";
 import { services, servicePhotos } from "@/content/site";
+import { findServicePage } from "@/content/servicePages";
 import { ServiceIcon, ArrowIcon } from "@/components/Icons";
 import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
@@ -29,9 +31,11 @@ export function Services() {
         </Reveal>
 
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => (
+          {services.map((service, i) => {
+            const pagina = findServicePage(service.id);
+            return (
             <Reveal as="li" key={service.id} delay={(i % 3) * 80}>
-              <article className="surface-paper group flex h-full flex-col overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-[0_18px_46px_-22px_rgba(16,16,24,0.45)]">
+              <article className="surface-paper group relative flex h-full flex-col overflow-hidden rounded-2xl transition-shadow duration-300 hover:shadow-[0_18px_46px_-22px_rgba(16,16,24,0.45)]">
                 {/* Sem foto cadastrada, o card fica só com ícone e texto —
                     melhor do que sete retângulos vazios em sequência. */}
                 {servicePhotos[service.id]?.src ? (
@@ -69,10 +73,26 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
+
+                  {/*
+                    O link cobre o card inteiro (stretched link): a área de
+                    toque vira o cartão todo, sem aninhar o conteúdo dentro
+                    de uma âncora — o que quebraria a semântica do <article>.
+                  */}
+                  {pagina ? (
+                    <Link
+                      href={`/servicos/${pagina.slug}/`}
+                      className="mt-5 inline-flex items-center gap-1.5 text-[0.9rem] font-bold text-brand-500 transition-colors hover:text-brand-600 before:absolute before:inset-0 before:content-['']"
+                    >
+                      Ver detalhes
+                      <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+                    </Link>
+                  ) : null}
                 </div>
               </article>
             </Reveal>
-          ))}
+            );
+          })}
 
           {/* Fecha a grade de três e vira mais um ponto de conversão. */}
           <Reveal as="li" delay={160} className="sm:col-span-2 lg:col-span-2">

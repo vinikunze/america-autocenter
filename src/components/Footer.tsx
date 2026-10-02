@@ -7,11 +7,11 @@ const navGroups = [
   {
     title: "Navegação",
     links: [
-      { href: "#servicos", label: "Serviços" },
-      { href: "#diferenciais", label: "Por que a América" },
-      { href: "#processo", label: "Como funciona" },
-      { href: "#duvidas", label: "Dúvidas frequentes" },
-      { href: "#local", label: "Onde estamos" },
+      { href: "/#servicos", label: "Serviços" },
+      { href: "/#diferenciais", label: "Por que a América" },
+      { href: "/#processo", label: "Como funciona" },
+      { href: "/#duvidas", label: "Dúvidas frequentes" },
+      { href: "/#local", label: "Onde estamos" },
     ],
   },
 ];

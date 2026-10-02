@@ -17,10 +17,13 @@ export function LeadForm({
   source,
   title = "Peça seu orçamento grátis",
   subtitle = "Respondemos pelo WhatsApp no horário comercial.",
+  defaultService = "",
 }: {
   source: LeadSource;
   title?: string;
   subtitle?: string;
+  /** Título do serviço já selecionado — usado nas páginas de serviço. */
+  defaultService?: string;
 }) {
   const [enviado, setEnviado] = useState(false);
 
@@ -90,7 +93,7 @@ export function LeadForm({
 
         <label className="block sm:col-span-2">
           <span className={rotulo}>Tipo de serviço</span>
-          <select name="servico" required defaultValue="" className={campo}>
+          <select name="servico" required defaultValue={defaultService} className={campo}>
             <option value="" disabled>
               Selecione o serviço...
             </option>

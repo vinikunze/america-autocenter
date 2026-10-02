@@ -66,6 +66,26 @@ npm run typecheck
 
 ---
 
+## Páginas
+
+| Rota | O que é |
+|---|---|
+| `/` | landing page — é para onde aponta a campanha de marca e o tráfego frio |
+| `/servicos/<slug>/` | uma por serviço (7), cada uma mirando o termo que a pessoa digita |
+
+As páginas de serviço existem por dois motivos concretos: no Google Ads, cada
+grupo de anúncio cai na página do serviço que ele anuncia — Índice de Qualidade
+sobe e o custo por clique cai; e na busca orgânica são sete portas de entrada
+em vez de uma. Conteúdo em `src/content/servicePages.ts`, rota em
+`src/app/servicos/[slug]/page.tsx`.
+
+O texto delas descreve procedimentos padrão do setor e **não afirma prazo,
+preço, marca de equipamento nem tecnologia específica**, porque nada disso foi
+confirmado. Se a oficina quiser destacar algo ("alinhamento 3D", "pronto em 1
+hora"), confirme antes de escrever.
+
+---
+
 ## Editando o conteúdo
 
 **Praticamente tudo vive em um arquivo só: `src/content/site.ts`.**
@@ -79,6 +99,7 @@ npm run typecheck
 | Depoimentos (seção some se vazio) | `testimonials` |
 | Prova social da primeira dobra (nota do Google, nº de clientes) | `socialProof` |
 | Fotos da página | `photos` e `servicePhotos` |
+| Conteúdo das páginas de serviço | `src/content/servicePages.ts` |
 | Perguntas frequentes (alimenta também o rich result do Google) | `faq` |
 
 Nenhum componente precisa ser tocado para atualizar texto.

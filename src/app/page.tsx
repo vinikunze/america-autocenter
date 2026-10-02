@@ -1,3 +1,4 @@
+import { HomeFaqSchema } from "@/components/StructuredData";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/sections/Hero";
 import { FeatureBar } from "@/components/sections/FeatureBar";
@@ -17,6 +18,7 @@ import { FloatingCta } from "@/components/FloatingCta";
 export default function Home() {
   return (
     <>
+      <HomeFaqSchema />
       <Header />
       <main>
         <Hero />
