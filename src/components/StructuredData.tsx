@@ -61,7 +61,7 @@ export function StructuredData() {
   const website = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: `${business.name} — ${fullAddress}`,
+    name: `${business.name}, ${fullAddress}`,
     url: siteUrl,
     inLanguage: "pt-BR",
   };

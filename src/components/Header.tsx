@@ -40,7 +40,7 @@ export function Header() {
         }`}
       >
         <div className="container-page flex h-[var(--header-h)] items-center justify-between gap-4">
-          <Link href="/" aria-label="América Auto Center — início" className="shrink-0">
+          <Link href="/" aria-label="América Auto Center, página inicial" className="shrink-0">
             <Logo className="h-11 sm:h-13" />
           </Link>
 

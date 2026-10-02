@@ -37,8 +37,8 @@ export function Differentials() {
             Por que escolher a <span className="text-accent">América Auto Center</span>
           </h2>
           <p className="mt-4 text-[1.02rem] leading-relaxed text-mist">
-            Quatro compromissos que valem para todo carro que entra no nosso box
-            — do serviço de trinta minutos ao reparo mais caro.
+            Quatro compromissos que valem para todo carro que entra no nosso
+            box, do serviço de trinta minutos ao reparo mais caro.
           </p>
         </Reveal>
 

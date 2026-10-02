@@ -16,7 +16,7 @@ export function Faq() {
           <SectionHeader
             eyebrow="Dúvidas frequentes"
             title="Antes de você perguntar"
-            description="Se a sua dúvida não estiver aqui, é só chamar no WhatsApp — respondemos em minutos no horário comercial."
+            description="Se a sua dúvida não estiver aqui, é só chamar no WhatsApp. A gente responde em minutos no horário comercial."
           />
           <Reveal delay={120} className="mt-8">
             <WhatsAppButton source="servicos" label="Tirar minha dúvida" variant="outline" />

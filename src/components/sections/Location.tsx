@@ -17,7 +17,7 @@ export function Location() {
                 Estrutura própria em <span className="text-accent">{business.city}</span>
               </>
             }
-            description="Fácil de achar, com espaço para manobra e atendimento presencial. Toque em “Como chegar” e o mapa traça a rota do lugar onde você está agora."
+            description="Fácil de achar, com espaço para manobra e atendimento presencial. Toque em “Como chegar” que o mapa traça a rota do lugar onde você está agora."
           />
 
           <div className="mt-10 flex flex-col gap-6">
@@ -95,7 +95,7 @@ export function Location() {
           <div className="surface-card relative h-full overflow-hidden rounded-2xl p-2">
             <iframe
               src={mapEmbedUrl}
-              title={`Mapa — ${business.name}, ${fullAddress}`}
+              title={`Mapa da ${business.name}, em ${fullAddress}`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-full min-h-[21rem] w-full rounded-xl border-0 grayscale-[0.55] contrast-[1.1] transition-[filter] duration-700 hover:grayscale-0"

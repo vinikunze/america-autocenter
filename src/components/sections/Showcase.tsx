@@ -38,10 +38,10 @@ export function Showcase() {
 
           <Reveal delay={130}>
             <p className="mt-5 max-w-lg text-[1.02rem] leading-relaxed text-mist">
-              O medo de levar o carro na oficina não é do conserto — é da conta
-              no fim. Por isso nosso processo inteiro foi montado para que você
-              saiba o que vai ser feito, quanto vai custar e por quê, antes de
-              autorizar.
+              O que dá medo na hora de levar o carro na oficina não é o
+              conserto, é a conta no fim. Montamos nosso processo inteiro para
+              que você saiba o que vai ser feito e quanto vai custar antes de
+              autorizar qualquer coisa.
             </p>
           </Reveal>
 

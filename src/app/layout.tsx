@@ -20,7 +20,7 @@ const display = Plus_Jakarta_Sans({
   variable: "--font-display-family",
 });
 
-const title = `${business.name} — Auto center em ${business.city}/${business.state}`;
+const title = `${business.name} | Auto center em ${business.city}/${business.state}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
